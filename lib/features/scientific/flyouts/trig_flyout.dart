@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../calculator/calculator_provider.dart';
 import '../scientific_provider.dart';
+import '../../../core/domain/entities/trig_mode.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/theme/app_icons.dart';
 import 'button_state.dart';

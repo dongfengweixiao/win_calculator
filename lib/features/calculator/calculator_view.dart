@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../shared/navigation/navigation_provider.dart';
+import '../../core/domain/entities/view_mode.dart';
 import 'calculator_provider.dart';
 import '../../core/services/calculator_service.dart';
+import '../../core/services/mode/mode_converter.dart';
+import '../../core/services/layout/responsive_layout_service.dart';
 import 'display_panel.dart';
 import 'button_panel.dart';
 import '../scientific/button_panel.dart';
@@ -28,9 +31,10 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
     final currentMode = ref.watch(currentModeProvider);
 
     // Sync calculator mode with navigation mode
+    // Uses ModeConverter service for conversion
     ref.listen(currentModeProvider, (previous, next) {
       if (previous != next) {
-        final calcMode = _viewModeToCalculatorMode(next);
+        final calcMode = ModeConverter.viewToCalculator(next);
         ref.read(calculatorProvider.notifier).setMode(calcMode);
       }
     });
@@ -43,13 +47,15 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             // Update history panel visibility based on width
+            // Uses ResponsiveLayoutService for layout logic
             WidgetsBinding.instance.addPostFrameCallback((_) {
               ref
                   .read(navigationProvider.notifier)
                   .updateHistoryPanelVisibility(constraints.maxWidth);
             });
 
-            final showHistoryPanel = constraints.maxWidth >= 640;
+            // Determine history panel visibility using ResponsiveLayoutService
+            final showHistoryPanel = ResponsiveLayoutService.shouldShowHistoryPanel(constraints.maxWidth);
 
             return Row(
               children: [
@@ -66,17 +72,6 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
         ),
       ),
     );
-  }
-
-  CalculatorMode _viewModeToCalculatorMode(ViewMode mode) {
-    switch (mode) {
-      case ViewMode.standard:
-        return CalculatorMode.standard;
-      case ViewMode.scientific:
-        return CalculatorMode.scientific;
-      case ViewMode.programmer:
-        return CalculatorMode.programmer;
-    }
   }
 
   void _showBottomHistorySheet(BuildContext context) {

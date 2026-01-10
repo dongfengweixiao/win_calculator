@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/app_icons.dart';
-
-/// Calculator view mode
-enum ViewMode {
-  standard,
-  scientific,
-  programmer,
-  // Date calculation is not yet implemented
-  // dateCalculation,
-}
+import '../../core/domain/entities/view_mode.dart';
+import '../../core/services/layout/responsive_layout_service.dart';
 
 /// Navigation category for the sidebar
 class NavCategory {
@@ -84,19 +77,14 @@ class NavigationState {
   }
 
   /// Get display name for current mode
+  /// Uses ViewMode extension from domain layer
   String get currentModeName {
-    switch (currentMode) {
-      case ViewMode.standard:
-        return '标准';
-      case ViewMode.scientific:
-        return '科学';
-      case ViewMode.programmer:
-        return '程序员';
-    }
+    return currentMode.displayName;
   }
 }
 
 /// Navigation notifier
+/// Refactored to use domain entities and services
 class NavigationNotifier extends Notifier<NavigationState> {
   @override
   NavigationState build() {
@@ -129,9 +117,9 @@ class NavigationNotifier extends Notifier<NavigationState> {
   }
 
   /// Set history panel visibility based on screen width
+  /// Uses ResponsiveLayoutService to determine visibility
   void updateHistoryPanelVisibility(double width) {
-    // Show history panel when width >= 640
-    final shouldShow = width >= 640;
+    final shouldShow = ResponsiveLayoutService.shouldShowHistoryPanel(width);
     if (state.showHistoryPanel != shouldShow) {
       state = state.copyWith(showHistoryPanel: shouldShow);
     }

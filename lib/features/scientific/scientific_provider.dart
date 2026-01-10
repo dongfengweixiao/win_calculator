@@ -1,24 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-/// Angle type enum
-enum AngleType {
-  degree(0, 'DEG'),
-  radian(1, 'RAD'),
-  gradian(2, 'GRAD');
-
-  final int value;
-  final String label;
-
-  const AngleType(this.value, this.label);
-
-  /// Legacy enum values for compatibility
-  static const degrees = AngleType.degree;
-  static const radians = AngleType.radian;
-  static const gradians = AngleType.gradian;
-}
-
-/// Trig mode enum
-enum TrigMode { normal, hyperbolic }
+import '../../core/domain/entities/angle_type.dart';
+import '../../core/domain/entities/trig_mode.dart';
+import '../../core/services/scientific/angle_service.dart';
+import '../../core/services/scientific/trig_mode_service.dart';
 
 /// Unified scientific calculator state
 /// Combines all scientific mode settings into a single state object
@@ -74,15 +58,15 @@ class ScientificState {
 
 /// Unified scientific calculator state notifier
 /// Manages all scientific calculator settings in one place
+/// Refactored to use domain entities and services
 class ScientificNotifier extends Notifier<ScientificState> {
   @override
   ScientificState build() => const ScientificState();
 
   /// Toggle angle type (DEG -> RAD -> GRAD -> DEG)
+  /// Uses AngleService to handle the cycling logic
   void toggleAngleType() {
-    final current = state.angleType;
-    final next =
-        AngleType.values[(current.value + 1) % AngleType.values.length];
+    final next = AngleService.cycleAngleType(state.angleType);
     state = state.copyWith(angleType: next);
   }
 
@@ -112,10 +96,9 @@ class ScientificNotifier extends Notifier<ScientificState> {
   }
 
   /// Toggle trigonometric mode (normal/hyperbolic)
+  /// Uses TrigModeService to handle the toggle logic
   void toggleTrigMode() {
-    final newMode = state.trigMode == TrigMode.normal
-        ? TrigMode.hyperbolic
-        : TrigMode.normal;
+    final newMode = TrigModeService.toggleTrigMode(state.trigMode);
     state = state.copyWith(trigMode: newMode);
   }
 
@@ -154,7 +137,7 @@ final angleTypeProvider =
 /// Notifier for angle type state
 class AngleTypeNotifier extends Notifier<AngleType> {
   @override
-  AngleType build() => AngleType.degrees;
+  AngleType build() => AngleType.degree;
 
   void setAngleType(AngleType type) {
     state = type;
@@ -249,10 +232,9 @@ class ScientificModeNotifier extends Notifier<ScientificState> {
   ScientificState build() => const ScientificState();
 
   /// Toggle angle type (DEG -> RAD -> GRAD -> DEG)
+  /// Uses AngleService to handle the cycling logic
   void toggleAngleType() {
-    final current = state.angleType;
-    final next =
-        AngleType.values[(current.value + 1) % AngleType.values.length];
+    final next = AngleService.cycleAngleType(state.angleType);
     state = state.copyWith(angleType: next);
   }
 

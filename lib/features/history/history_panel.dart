@@ -7,6 +7,8 @@ import '../../core/theme/app_icons.dart';
 import '../../core/services/history/history_formatter.dart';
 import '../../core/services/history/history_recall_service.dart';
 import '../../core/services/history/history_deleter.dart';
+import '../../l10n/l10n.dart';
+import '../../l10n/app_localizations.dart';
 
 // HistoryPanelTab is now defined in history_deleter.dart
 
@@ -34,6 +36,7 @@ class HistoryMemoryPanel extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(calculatorThemeProvider);
     final currentTab = ref.watch(historyPanelTabProvider);
+    final l10n = context.l10n;
 
     return Container(
       width: 320,
@@ -41,7 +44,7 @@ class HistoryMemoryPanel extends ConsumerWidget {
       child: Column(
         children: [
           // Tab bar
-          _buildTabBar(ref, theme, currentTab),
+          _buildTabBar(ref, theme, currentTab, l10n),
 
           // Tab content
           Expanded(
@@ -58,6 +61,7 @@ class HistoryMemoryPanel extends ConsumerWidget {
     WidgetRef ref,
     CalculatorTheme theme,
     HistoryPanelTab currentTab,
+    AppLocalizations l10n,
   ) {
     return Container(
       height: 48,
@@ -66,7 +70,7 @@ class HistoryMemoryPanel extends ConsumerWidget {
         children: [
           _TabButton(
             icon: CalculatorIcons.history,
-            label: '历史记录',
+            label: l10n.history,
             isSelected: currentTab == HistoryPanelTab.history,
             theme: theme,
             onPressed: () => ref
@@ -76,7 +80,7 @@ class HistoryMemoryPanel extends ConsumerWidget {
           const SizedBox(width: 8),
           _TabButton(
             icon: CalculatorIcons.memory,
-            label: '内存',
+            label: l10n.memory,
             isSelected: currentTab == HistoryPanelTab.memory,
             theme: theme,
             onPressed: () => ref
@@ -229,6 +233,7 @@ class _HistoryList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(calculatorThemeProvider);
     final historyItems = ref.watch(calculatorProvider).historyItems;
+    final l10n = context.l10n;
 
     if (historyItems.isEmpty) {
       return Center(
@@ -242,7 +247,7 @@ class _HistoryList extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '还没有历史记录',
+              l10n.noHistoryTitle,
               style: TextStyle(color: theme.textSecondary, fontSize: 14),
             ),
           ],
@@ -344,6 +349,7 @@ class _MemoryList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(calculatorThemeProvider);
     final memoryItems = ref.watch(calculatorProvider).memoryItems;
+    final l10n = context.l10n;
 
     if (memoryItems.isEmpty) {
       return Center(
@@ -357,12 +363,12 @@ class _MemoryList extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '内存中没有数据',
+              l10n.noMemoryTitle,
               style: TextStyle(color: theme.textSecondary, fontSize: 14),
             ),
             const SizedBox(height: 8),
             Text(
-              '使用内存按钮存储数字',
+              l10n.noMemoryHint,
               style: TextStyle(
                 color: theme.textSecondary.withValues(alpha: 0.7),
                 fontSize: 12,

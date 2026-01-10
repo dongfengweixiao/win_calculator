@@ -1,0 +1,55 @@
+{
+  "@@locale": "en",
+  "standardMode": "Standard",
+  "@standardMode": {
+    "description": "Name for the standard calculator mode"
+  },
+  "scientificMode": "Scientific",
+  "@scientificMode": {
+    "description": "Name for the scientific calculator mode"
+  },
+  "programmerMode": "Programmer",
+  "@programmerMode": {
+    "description": "Name for the programmer calculator mode"
+  },
+  "history": "History",
+  "@history": {
+    "description": "History panel tab label"
+  },
+  "memory": "Memory",
+  "@memory": {
+    "description": "Memory panel tab label"
+  },
+  "noHistoryTitle": "No history yet",
+  "@noHistoryTitle": {
+    "description": "Title shown when history is empty"
+  },
+  "noHistoryMessage": "No history records yet",
+  "@noHistoryMessage": {
+    "description": "Message shown when history is empty"
+  },
+  "noMemoryTitle": "Memory is empty",
+  "@noMemoryTitle": {
+    "description": "Title shown when memory is empty"
+  },
+  "noMemoryMessage": "No data in memory",
+  "@noMemoryMessage": {
+    "description": "Message shown when memory is empty"
+  },
+  "noMemoryHint": "Use memory buttons to store numbers",
+  "@noMemoryHint": {
+    "description": "Hint shown when memory is empty"
+  },
+  "degree": "Degree",
+  "@degree": {
+    "description": "Degree angle unit"
+  },
+  "radian": "Radian",
+  "@radian": {
+    "description": "Radian angle unit"
+  },
+  "gradian": "Grad",
+  "@gradian": {
+    "description": "Gradian angle unit"
+  }
+}

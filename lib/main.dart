@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
+import 'l10n/l10n.dart';
+import 'l10n/app_localizations.dart';
 import 'shared/theme/theme_provider.dart';
 import 'features/calculator/calculator_view.dart';
 
@@ -30,9 +33,16 @@ class CalculatorApp extends ConsumerWidget {
     final themeState = ref.watch(themeProvider);
 
     return MaterialApp(
-      title: '计算器',
+      title: 'WinCalc',
       debugShowCheckedModeBanner: false,
       theme: themeState.theme.toThemeData(),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: supportedLocales,
       home: const CalculatorView(),
     );
   }

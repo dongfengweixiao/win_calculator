@@ -7,6 +7,8 @@ import '../../core/theme/app_icons.dart';
 import '../../core/services/history/history_formatter.dart';
 import '../../core/services/history/history_recall_service.dart';
 import '../../core/services/history/history_deleter.dart';
+import '../../l10n/l10n.dart';
+import '../../l10n/app_localizations.dart';
 
 /// Bottom history sheet widget
 class BottomHistorySheet extends ConsumerStatefulWidget {
@@ -47,6 +49,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
     final theme = ref.watch(calculatorThemeProvider);
     final historyItems = ref.watch(calculatorProvider).historyItems;
     final memoryItems = ref.watch(calculatorProvider).memoryItems;
+    final l10n = context.l10n;
 
     return AnimatedBuilder(
       animation: _animation,
@@ -83,13 +86,13 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
                 ),
 
                 // Tab bar
-                _buildTabBar(theme),
+                _buildTabBar(theme, l10n),
 
                 // Content area
                 Expanded(
                   child: _isHistoryTab
-                      ? _buildHistoryList(historyItems, theme)
-                      : _buildMemoryList(memoryItems, theme),
+                      ? _buildHistoryList(historyItems, theme, l10n)
+                      : _buildMemoryList(memoryItems, theme, l10n),
                 ),
               ],
             ),
@@ -99,7 +102,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
     );
   }
 
-  Widget _buildTabBar(CalculatorTheme theme) {
+  Widget _buildTabBar(CalculatorTheme theme, AppLocalizations l10n) {
     return Container(
       height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -108,7 +111,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
           // History tab
           _TabButton(
             icon: CalculatorIcons.history,
-            label: '历史记录',
+            label: l10n.history,
             isSelected: _isHistoryTab,
             theme: theme,
             onPressed: () => setState(() => _isHistoryTab = true),
@@ -117,7 +120,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
           // Memory tab
           _TabButton(
             icon: CalculatorIcons.memory,
-            label: '内存',
+            label: l10n.memory,
             isSelected: !_isHistoryTab,
             theme: theme,
             onPressed: () => setState(() => _isHistoryTab = false),
@@ -134,7 +137,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
     );
   }
 
-  Widget _buildHistoryList(List historyItems, CalculatorTheme theme) {
+  Widget _buildHistoryList(List historyItems, CalculatorTheme theme, AppLocalizations l10n) {
     if (historyItems.isEmpty) {
       return Center(
         child: Column(
@@ -147,7 +150,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
             ),
             const SizedBox(height: 16),
             Text(
-              '还没有历史记录',
+              l10n.noHistoryTitle,
               style: TextStyle(color: theme.textSecondary, fontSize: 14),
             ),
           ],
@@ -175,7 +178,7 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
     );
   }
 
-  Widget _buildMemoryList(List memoryItems, CalculatorTheme theme) {
+  Widget _buildMemoryList(List memoryItems, CalculatorTheme theme, AppLocalizations l10n) {
     if (memoryItems.isEmpty) {
       return Center(
         child: Column(
@@ -188,12 +191,12 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
             ),
             const SizedBox(height: 16),
             Text(
-              '内存中没有数据',
+              l10n.noMemoryTitle,
               style: TextStyle(color: theme.textSecondary, fontSize: 14),
             ),
             const SizedBox(height: 8),
             Text(
-              '使用内存按钮存储数字',
+              l10n.noMemoryHint,
               style: TextStyle(
                 color: theme.textSecondary.withValues(alpha: 0.7),
                 fontSize: 12,

@@ -29,14 +29,9 @@ class ModeConverter {
     }
   }
 
-  /// Get display name for ViewMode
-  static String getViewModeDisplayName(ViewMode mode) {
-    return mode.displayName;
-  }
-
-  /// Get display name for CalculatorMode
-  static String getCalculatorModeDisplayName(CalculatorMode mode) {
-    return mode.displayName;
+  /// Get localization key for ViewMode
+  static String getViewModeLocalizationKey(ViewMode mode) {
+    return mode.localizationKey;
   }
 
   /// Check if two modes are compatible

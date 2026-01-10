@@ -16,15 +16,15 @@ enum ViewMode {
 
 /// Extension on ViewMode to provide conversion and display methods
 extension ViewModeExtension on ViewMode {
-  /// Get the display name for the view mode
-  String get displayName {
+  /// Get the localization key for the view mode
+  String get localizationKey {
     switch (this) {
       case ViewMode.standard:
-        return '标准';
+        return 'standardMode';
       case ViewMode.scientific:
-        return '科学';
+        return 'scientificMode';
       case ViewMode.programmer:
-        return '程序员';
+        return 'programmerMode';
     }
   }
 

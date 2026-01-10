@@ -75,12 +75,6 @@ class NavigationState {
       showHistoryPanel: showHistoryPanel ?? this.showHistoryPanel,
     );
   }
-
-  /// Get display name for current mode
-  /// Uses ViewMode extension from domain layer
-  String get currentModeName {
-    return currentMode.displayName;
-  }
 }
 
 /// Navigation notifier

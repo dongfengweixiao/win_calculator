@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../shared/navigation/navigation_provider.dart';
 import '../../core/domain/entities/view_mode.dart';
+import '../../l10n/l10n.dart';
 import 'calculator_provider.dart';
 import '../../core/services/mode/mode_converter.dart';
 import '../../core/services/layout/responsive_layout_service.dart';
@@ -188,7 +189,7 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
               Padding(
                 padding: const EdgeInsets.only(left: 12),
                 child: Text(
-                  navState.currentModeName,
+                  _getModeDisplayName(context, navState.currentMode),
                   style: TextStyle(
                     color: calculatorTheme.textPrimary,
                     fontSize: 18,
@@ -201,6 +202,20 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
         ),
       ),
     );
+  }
+
+  String _getModeDisplayName(BuildContext context, ViewMode mode) {
+    final l10n = context.l10n;
+    switch (mode.localizationKey) {
+      case 'standardMode':
+        return l10n.standardMode;
+      case 'scientificMode':
+        return l10n.scientificMode;
+      case 'programmerMode':
+        return l10n.programmerMode;
+      default:
+        return mode.localizationKey;
+    }
   }
 }
 

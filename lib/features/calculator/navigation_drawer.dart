@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/navigation/navigation_provider.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/domain/entities/view_mode.dart';
+import '../../l10n/l10n.dart';
+import '../../l10n/app_localizations.dart';
 
 /// Navigation drawer for calculator mode selection
 class CalculatorNavigationDrawer extends ConsumerWidget {
@@ -72,10 +75,19 @@ class CalculatorNavigationDrawer extends ConsumerWidget {
   ) {
     final navState = ref.watch(navigationProvider);
     final isSelected = category.viewMode == navState.currentMode;
+    final l10n = context.l10n;
+
+    // Get localized label
+    String localizedLabel;
+    if (category.viewMode != null) {
+      localizedLabel = _getModeDisplayName(l10n, category.viewMode!);
+    } else {
+      localizedLabel = category.name;
+    }
 
     return _NavigationItem(
       icon: category.icon,
-      label: category.name,
+      label: localizedLabel,
       isSelected: isSelected,
       theme: theme,
       onPressed: category.viewMode != null
@@ -85,6 +97,19 @@ class CalculatorNavigationDrawer extends ConsumerWidget {
             }
           : null,
     );
+  }
+
+  String _getModeDisplayName(AppLocalizations l10n, ViewMode mode) {
+    switch (mode.localizationKey) {
+      case 'standardMode':
+        return l10n.standardMode;
+      case 'scientificMode':
+        return l10n.scientificMode;
+      case 'programmerMode':
+        return l10n.programmerMode;
+      default:
+        return mode.localizationKey;
+    }
   }
 }
 

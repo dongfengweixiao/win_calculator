@@ -1,0 +1,55 @@
+{
+  "@@locale": "zh",
+  "standardMode": "标准",
+  "@standardMode": {
+    "description": "Name for the standard calculator mode"
+  },
+  "scientificMode": "科学",
+  "@scientificMode": {
+    "description": "Name for the scientific calculator mode"
+  },
+  "programmerMode": "程序员",
+  "@programmerMode": {
+    "description": "Name for the programmer calculator mode"
+  },
+  "history": "历史记录",
+  "@history": {
+    "description": "History panel tab label"
+  },
+  "memory": "内存",
+  "@memory": {
+    "description": "Memory panel tab label"
+  },
+  "noHistoryTitle": "还没有历史记录",
+  "@noHistoryTitle": {
+    "description": "Title shown when history is empty"
+  },
+  "noHistoryMessage": "还没有历史记录",
+  "@noHistoryMessage": {
+    "description": "Message shown when history is empty"
+  },
+  "noMemoryTitle": "内存中没有数据",
+  "@noMemoryTitle": {
+    "description": "Title shown when memory is empty"
+  },
+  "noMemoryMessage": "内存中没有数据",
+  "@noMemoryMessage": {
+    "description": "Message shown when memory is empty"
+  },
+  "noMemoryHint": "使用内存按钮存储数字",
+  "@noMemoryHint": {
+    "description": "Hint shown when memory is empty"
+  },
+  "degree": "度",
+  "@degree": {
+    "description": "Degree angle unit"
+  },
+  "radian": "弧度",
+  "@radian": {
+    "description": "Radian angle unit"
+  },
+  "gradian": "梯度",
+  "@gradian": {
+    "description": "Gradian angle unit"
+  }
+}

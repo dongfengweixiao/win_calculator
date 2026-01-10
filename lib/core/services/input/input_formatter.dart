@@ -26,7 +26,7 @@ class InputFormatter {
     // Truncate if exceeds expression limit
     if (DisplayLimits.exceedsExpressionLimit(expression)) {
       final maxLength = DisplayLimits.maxExpressionLength;
-      return expression.substring(0, maxLength - 3) + '...';
+      return '${expression.substring(0, maxLength - 3)}...';
     }
 
     return expression;

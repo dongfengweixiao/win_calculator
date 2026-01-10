@@ -37,7 +37,7 @@ class HistoryFormatter {
   /// Format result for display
   static String formatResult(String result) {
     if (result.length > 32) {
-      return result.substring(0, 29) + '...';
+      return '${result.substring(0, 29)}...';
     }
     return result;
   }

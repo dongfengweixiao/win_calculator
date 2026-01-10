@@ -59,7 +59,7 @@ class DisplayLimits {
   /// Truncate value to display limit
   static String truncateToDisplayLimit(String value) {
     if (exceedsDisplayLimit(value)) {
-      return value.substring(0, maxDisplayLength - 3) + '...';
+      return '${value.substring(0, maxDisplayLength - 3)}...';
     }
     return value;
   }

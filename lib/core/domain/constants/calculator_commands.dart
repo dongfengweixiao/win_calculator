@@ -1,5 +1,4 @@
-import 'package:wincalc_engine/wincalc_engine.dart';
-
+// ignore_for_file: constant_identifier_names
 /// Calculator command constants
 /// Centralized location for all calculator command codes
 ///

@@ -15,11 +15,10 @@ class ModeSynchronizer {
     ViewMode viewMode,
   ) {
     // Convert ViewMode to CalculatorMode
-    final calcMode = ModeConverter.viewToCalculator(viewMode);
-
-    // Update calculator provider with new mode
-    // Note: This will be implemented after we refactor calculator_provider.dart
+    // Note: Mode conversion is available but not currently used
+    // This will be implemented after we refactor calculator_provider.dart
     // For now, this is a placeholder
+    ModeConverter.viewToCalculator(viewMode);
   }
 
   /// Synchronize modes with custom handling

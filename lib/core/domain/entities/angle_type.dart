@@ -22,7 +22,7 @@ enum AngleType {
 
   /// Cycle to the next angle type
   AngleType get next {
-    final index = (this.value + 1) % AngleType.values.length;
+    final index = (value + 1) % AngleType.values.length;
     return AngleType.values[index];
   }
 

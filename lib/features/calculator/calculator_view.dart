@@ -4,7 +4,6 @@ import '../../shared/theme/theme_provider.dart';
 import '../../shared/navigation/navigation_provider.dart';
 import '../../core/domain/entities/view_mode.dart';
 import 'calculator_provider.dart';
-import '../../core/services/calculator_service.dart';
 import '../../core/services/mode/mode_converter.dart';
 import '../../core/services/layout/responsive_layout_service.dart';
 import 'display_panel.dart';

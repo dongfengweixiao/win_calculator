@@ -5,7 +5,7 @@ import '../../domain/constants/calculator_commands.dart';
 class CommandMapper {
   /// Map digit to command
   static int mapDigitToCommand(int digit) {
-    if (!InputValidator.isValidDigit(digit)) {
+    if (!inputValidator.isValidDigit(digit)) {
       throw ArgumentError('Invalid digit: $digit');
     }
     return CalculatorCommands.mapDigit(digit);
@@ -88,8 +88,8 @@ class CommandMapper {
   /// Private constructor to prevent instantiation
   CommandMapper._();
 
-  /// Import InputValidator to use its methods
-  static final InputValidator = _InputValidatorProxy();
+  /// InputValidator proxy to use its methods
+  static final inputValidator = _InputValidatorProxy();
 }
 
 class _InputValidatorProxy {

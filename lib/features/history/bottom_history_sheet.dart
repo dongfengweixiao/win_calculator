@@ -4,6 +4,9 @@ import '../calculator/calculator_provider.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/app_icons.dart';
+import '../../core/services/history/history_formatter.dart';
+import '../../core/services/history/history_recall_service.dart';
+import '../../core/services/history/history_deleter.dart';
 
 /// Bottom history sheet widget
 class BottomHistorySheet extends ConsumerStatefulWidget {
@@ -157,14 +160,14 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
       itemCount: historyItems.length,
       itemBuilder: (context, index) {
         final item = historyItems[historyItems.length - 1 - index];
+        final actualIndex = historyItems.length - 1 - index;
         return _HistoryItem(
-          expression: item.expression,
-          result: item.result,
+          expression: HistoryFormatter.formatExpression(item.expression),
+          result: HistoryFormatter.formatResult(item.result),
           theme: theme,
           onTap: () {
-            ref
-                .read(calculatorProvider.notifier)
-                .recallHistory(historyItems.length - 1 - index);
+            // Use HistoryRecallService to recall history item
+            HistoryRecallService.recallToCalculator(ref, historyItems.length, actualIndex);
             _closeSheet();
           },
         );
@@ -206,20 +209,24 @@ class _BottomHistorySheetState extends ConsumerState<BottomHistorySheet>
       itemCount: memoryItems.length,
       itemBuilder: (context, index) {
         return _MemoryItem(
-          value: memoryItems[index],
+          value: HistoryFormatter.formatMemoryValue(memoryItems[index]),
           theme: theme,
           onTap: () {
-            ref.read(calculatorProvider.notifier).memoryRecallAt(index);
+            // Use HistoryRecallService to recall memory item
+            HistoryRecallService.recallMemory(ref, index);
             _closeSheet();
           },
           onClear: () {
-            ref.read(calculatorProvider.notifier).memoryClearAt(index);
+            // Use HistoryDeleter to clear memory item
+            HistoryDeleter.deleteMemoryItem(ref, index);
           },
           onAdd: () {
-            ref.read(calculatorProvider.notifier).memoryAddAt(index);
+            // Use HistoryRecallService to add to memory
+            HistoryRecallService.addMemory(ref, index);
           },
           onSubtract: () {
-            ref.read(calculatorProvider.notifier).memorySubtractAt(index);
+            // Use HistoryRecallService to subtract from memory
+            HistoryRecallService.subtractMemory(ref, index);
           },
         );
       },

@@ -1,67 +1,52 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/entities/history_item.dart';
+import '../../../features/calculator/calculator_provider.dart';
 import '../input/input_validator.dart';
 
 /// History recall service
 /// Handles recalling history items into the calculator
 class HistoryRecallService {
-  /// Recall history item to calculator display
-  static String recallHistory(
-    List<HistoryItem> items,
-    int index,
-  ) {
-    if (!isValidIndex(items, index)) {
-      throw ArgumentError('Invalid history index: $index');
-    }
-
-    return items[index].result;
-  }
-
   /// Validate history index
-  static bool isValidIndex(List<HistoryItem> items, int index) {
-    return InputValidator.isValidHistoryIndex(index, items.length);
+  static bool isValidIndex(int totalCount, int index) {
+    return InputValidator.isValidHistoryIndex(index, totalCount);
   }
 
-  /// Get history item at index
-  static HistoryItem? getItemAt(
-    List<HistoryItem> items,
-    int index,
-  ) {
-    if (!isValidIndex(items, index)) {
-      return null;
-    }
-
-    return items[index];
-  }
-
-  /// Get most recent history item
-  static HistoryItem? getMostRecent(List<HistoryItem> items) {
-    if (items.isEmpty) {
-      return null;
-    }
-
-    return items.first;
-  }
-
-  /// Get oldest history item
-  static HistoryItem? getOldest(List<HistoryItem> items) {
-    if (items.isEmpty) {
-      return null;
-    }
-
-    return items.last;
-  }
-
-  /// Recall history item using calculator service
+  /// Recall history item using calculator provider
   static void recallToCalculator(
     WidgetRef ref,
-    List<HistoryItem> items,
+    int totalCount,
     int index,
   ) {
-    final result = recallHistory(items, index);
+    if (!isValidIndex(totalCount, index)) {
+      return;
+    }
 
-    // This will be implemented when we refactor calculator_provider.dart
-    // For now, this is a placeholder that shows the pattern
+    // Use the calculator provider's recallHistory method
+    ref.read(calculatorProvider.notifier).recallHistory(index);
+  }
+
+  /// Recall memory item at index
+  static void recallMemory(
+    WidgetRef ref,
+    int index,
+  ) {
+    // Use the calculator provider's memoryRecallAt method
+    ref.read(calculatorProvider.notifier).memoryRecallAt(index);
+  }
+
+  /// Add to memory item at index
+  static void addMemory(
+    WidgetRef ref,
+    int index,
+  ) {
+    ref.read(calculatorProvider.notifier).memoryAddAt(index);
+  }
+
+  /// Subtract from memory item at index
+  static void subtractMemory(
+    WidgetRef ref,
+    int index,
+  ) {
+    ref.read(calculatorProvider.notifier).memorySubtractAt(index);
   }
 
   /// Private constructor to prevent instantiation

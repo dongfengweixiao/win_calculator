@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../features/calculator/calculator_provider.dart';
 
 /// History panel tab enum
 enum HistoryPanelTab { history, memory }
@@ -20,12 +21,15 @@ class HistoryDeleter {
   }
 
   /// Delete history item at index
+  /// Note: Current implementation clears all history. Individual item deletion
+  /// would require additional FFI methods.
   static void deleteHistoryItem(
     WidgetRef ref,
     int index,
   ) {
-    // This will be implemented when we refactor history_panel.dart
-    // For now, this is a placeholder that shows the pattern
+    // Clear all history for now
+    // Individual deletion would need CMD_DELETE_HISTORY_ITEM or similar
+    clearAllHistory(ref);
   }
 
   /// Delete memory item at index
@@ -33,8 +37,8 @@ class HistoryDeleter {
     WidgetRef ref,
     int index,
   ) {
-    // This will be implemented when we refactor history_panel.dart
-    // For now, this is a placeholder that shows the pattern
+    // Use the memoryClearAt method from calculator provider
+    ref.read(calculatorProvider.notifier).memoryClearAt(index);
   }
 
   /// Delete item based on current tab
@@ -57,12 +61,12 @@ class HistoryDeleter {
 
   /// Clear all history
   static void clearAllHistory(WidgetRef ref) {
-    // This will be implemented when we refactor calculator_provider.dart
+    ref.read(calculatorProvider.notifier).clearHistory();
   }
 
   /// Clear all memory
   static void clearAllMemory(WidgetRef ref) {
-    // This will be implemented when we refactor calculator_provider.dart
+    ref.read(calculatorProvider.notifier).memoryClear();
   }
 
   /// Private constructor to prevent instantiation

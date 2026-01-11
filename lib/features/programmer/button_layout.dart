@@ -1,10 +1,11 @@
+import 'package:example/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../calculator/calculator_provider.dart';
 import 'programmer_provider.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../core/theme/app_icons.dart';
-import 'buttons/programmer_buttons.dart';
+import '../../core/widgets/calc_button.dart';
 import 'services/programmer_button_service.dart';
 import 'flyouts/bitwise_flyout.dart';
 import 'flyouts/shift_flyout.dart';
@@ -40,6 +41,7 @@ class ProgrammerButtonLayout extends ConsumerWidget {
                 ShiftFlyoutButton(
                   programmer: ref.read(programmerProvider.notifier),
                   theme: theme,
+                  currentMode: programmerState.shiftMode,
                 ),
               ],
             ),
@@ -122,23 +124,34 @@ class _ButtonRow extends StatelessWidget {
     required this.buttonService,
   });
 
+  CalcButtonType _getButtonType(String label) {
+    if (label == '=') {
+      return CalcButtonType.emphasized;
+    } else if (['+', '-', '×', '÷', '%', '<<', '>>', '(', ')', 'C', 'CE'].contains(label)) {
+      return CalcButtonType.operator;
+    } else {
+      return CalcButtonType.number;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: labels.map((label) {
         final isDisabled = buttonService.isButtonDisabled(label, programmerState);
         final labelInfo = _getLabelInfo(label, calculatorState);
+        final buttonType = _getButtonType(label);
 
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.all(1),
-            child: ProgrammerButton(
-              label: labelInfo.displayLabel,
+            child: CalcButton(
+              text: labelInfo.displayLabel,
               icon: labelInfo.icon,
-              theme: theme,
+              type: buttonType,
               isDisabled: isDisabled,
               onPressed: isDisabled
-                  ? () {}
+                  ? null
                   : () => buttonService.handleButtonPress(label, programmerState),
             ),
           ),

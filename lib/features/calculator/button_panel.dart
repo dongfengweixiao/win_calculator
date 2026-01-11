@@ -5,7 +5,7 @@ import '../../shared/theme/theme_provider.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/app_font_sizes.dart';
 import '../../core/theme/app_icons.dart';
-import 'calculator_button.dart';
+import '../../core/widgets/calc_button.dart';
 
 /// Standard calculator button panel
 class StandardButtonPanel extends ConsumerWidget {
@@ -45,27 +45,27 @@ class StandardButtonPanel extends ConsumerWidget {
       height: 40,
       child: Row(
         children: [
-          CalculatorButton(
+          CalcButton(
             text: 'MC',
             type: CalcButtonType.memory,
             onPressed: calculator.memoryClear,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'MR',
             type: CalcButtonType.memory,
             onPressed: calculator.memoryRecall,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'M+',
             type: CalcButtonType.memory,
             onPressed: calculator.memoryAdd,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'M-',
             type: CalcButtonType.memory,
             onPressed: calculator.memorySubtract,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'MS',
             type: CalcButtonType.memory,
             onPressed: calculator.memoryStore,
@@ -79,24 +79,24 @@ class StandardButtonPanel extends ConsumerWidget {
     return Expanded(
       child: Row(
         children: [
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.percent,
             type: CalcButtonType.operator,
             onPressed: calculator.percent,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'CE',
             type: CalcButtonType.operator,
             fontSize: CalculatorFontSizes.numeric16,
             onPressed: calculator.clearEntry,
           ),
-          CalculatorButton(
+          CalcButton(
             text: 'C',
             type: CalcButtonType.operator,
             fontSize: CalculatorFontSizes.numeric16,
             onPressed: calculator.clear,
           ),
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.backspace,
             type: CalcButtonType.operator,
             onPressed: calculator.backspace,
@@ -110,22 +110,22 @@ class StandardButtonPanel extends ConsumerWidget {
     return Expanded(
       child: Row(
         children: [
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.reciprocal,
             type: CalcButtonType.operator,
             onPressed: calculator.reciprocal,
           ),
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.square,
             type: CalcButtonType.operator,
             onPressed: calculator.square,
           ),
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.squareRoot,
             type: CalcButtonType.operator,
             onPressed: calculator.squareRoot,
           ),
-          CalculatorButton(
+          CalcButton(
             icon: CalculatorIcons.divide,
             type: CalcButtonType.operator,
             onPressed: calculator.divide,
@@ -138,22 +138,22 @@ class StandardButtonPanel extends ConsumerWidget {
   Widget _buildNumberRow7(CalculatorNotifier calculator) {
     return Row(
       children: [
-        CalculatorButton(
+        CalcButton(
           text: '7',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(7),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '8',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(8),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '9',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(9),
         ),
-        CalculatorButton(
+        CalcButton(
           icon: CalculatorIcons.multiply,
           type: CalcButtonType.operator,
           onPressed: calculator.multiply,
@@ -165,22 +165,22 @@ class StandardButtonPanel extends ConsumerWidget {
   Widget _buildNumberRow4(CalculatorNotifier calculator) {
     return Row(
       children: [
-        CalculatorButton(
+        CalcButton(
           text: '4',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(4),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '5',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(5),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '6',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(6),
         ),
-        CalculatorButton(
+        CalcButton(
           icon: CalculatorIcons.minus,
           type: CalcButtonType.operator,
           onPressed: calculator.subtract,
@@ -192,22 +192,22 @@ class StandardButtonPanel extends ConsumerWidget {
   Widget _buildNumberRow1(CalculatorNotifier calculator) {
     return Row(
       children: [
-        CalculatorButton(
+        CalcButton(
           text: '1',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(1),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '2',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(2),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '3',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(3),
         ),
-        CalculatorButton(
+        CalcButton(
           icon: CalculatorIcons.plus,
           type: CalcButtonType.operator,
           onPressed: calculator.add,
@@ -219,22 +219,22 @@ class StandardButtonPanel extends ConsumerWidget {
   Widget _buildLastRow(CalculatorNotifier calculator) {
     return Row(
       children: [
-        CalculatorButton(
+        CalcButton(
           icon: CalculatorIcons.negate,
           type: CalcButtonType.number,
           onPressed: calculator.inputNegate,
         ),
-        CalculatorButton(
+        CalcButton(
           text: '0',
           type: CalcButtonType.number,
           onPressed: () => calculator.inputDigit(0),
         ),
-        CalculatorButton(
+        CalcButton(
           text: '.',
           type: CalcButtonType.number,
           onPressed: calculator.inputDecimal,
         ),
-        CalculatorButton(
+        CalcButton(
           icon: CalculatorIcons.equals,
           type: CalcButtonType.emphasized,
           onPressed: calculator.equals,

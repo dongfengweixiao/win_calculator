@@ -8,11 +8,13 @@ import '../../../core/theme/app_icons.dart';
 class ShiftFlyoutButton extends StatefulWidget {
   final ProgrammerNotifier programmer;
   final CalculatorTheme theme;
+  final ShiftMode currentMode;
 
   const ShiftFlyoutButton({
     super.key,
     required this.programmer,
     required this.theme,
+    required this.currentMode,
   });
 
   @override
@@ -39,7 +41,7 @@ class _ShiftFlyoutButtonState extends State<ShiftFlyoutButton> {
         theme: widget.theme,
         position: position,
         buttonSize: button.size,
-        currentMode: widget.programmer.state.shiftMode,
+        currentMode: widget.currentMode,
       ),
     );
   }

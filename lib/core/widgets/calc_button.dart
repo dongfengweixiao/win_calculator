@@ -1,36 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/theme/app_theme.dart';
-import '../../core/theme/app_font_sizes.dart';
-import '../../core/theme/app_dimensions.dart';
+import '../theme/app_theme.dart';
+import '../theme/app_font_sizes.dart';
+import '../theme/app_dimensions.dart';
 import '../../shared/theme/theme_provider.dart';
 
-/// Calculator button widget
-class CalculatorButton extends ConsumerStatefulWidget {
+/// Unified calculator button widget for all calculator modes
+///
+/// Supports text and icon display, handles hover/pressed states,
+/// and applies theme-based styling based on button type.
+class CalcButton extends ConsumerStatefulWidget {
   /// Text content (for buttons without icons)
   final String? text;
 
   /// Icon data (for buttons with calculator font icons)
   final IconData? icon;
 
-  /// Button type for styling
+  /// Button type for styling (number, operator, function, emphasized, memory)
   final CalcButtonType type;
 
   /// Callback when button is pressed
   final VoidCallback? onPressed;
 
-  /// Custom font size
+  /// Whether the button is disabled
+  final bool isDisabled;
+
+  /// Custom font size (optional, defaults based on button type)
   final double? fontSize;
 
   /// Flex value for layout
   final int flex;
 
-  const CalculatorButton({
+  const CalcButton({
     super.key,
     this.text,
     this.icon,
     this.type = CalcButtonType.number,
     this.onPressed,
+    this.isDisabled = false,
     this.fontSize,
     this.flex = 1,
   }) : assert(
@@ -39,15 +46,15 @@ class CalculatorButton extends ConsumerStatefulWidget {
        );
 
   @override
-  ConsumerState<CalculatorButton> createState() => _CalculatorButtonState();
+  ConsumerState<CalcButton> createState() => _CalcButtonState();
 }
 
-class _CalculatorButtonState extends ConsumerState<CalculatorButton> {
+class _CalcButtonState extends ConsumerState<CalcButton> {
   bool _isHovered = false;
   bool _isPressed = false;
 
   CalcButtonState get _buttonState {
-    if (widget.onPressed == null) return CalcButtonState.disabled;
+    if (widget.isDisabled || widget.onPressed == null) return CalcButtonState.disabled;
     if (_isPressed) return CalcButtonState.pressed;
     if (_isHovered) return CalcButtonState.hover;
     return CalcButtonState.normal;
@@ -65,23 +72,39 @@ class _CalculatorButtonState extends ConsumerState<CalculatorButton> {
       _buttonState,
     );
 
-    // Determine font size based on button type
-    double fontSize = widget.fontSize ?? _getDefaultFontSize();
+    // Determine font size based on button type or custom value
+    double fontSize = widget.fontSize ?? _getDefaultFontSize(theme);
+
+    // Determine cursor based on disabled state
+    final cursor = widget.isDisabled
+        ? SystemMouseCursors.forbidden
+        : SystemMouseCursors.click;
 
     return Expanded(
       flex: widget.flex,
       child: Padding(
         padding: const EdgeInsets.all(CalculatorDimensions.buttonMargin),
         child: MouseRegion(
-          onEnter: (_) => setState(() => _isHovered = true),
-          onExit: (_) => setState(() => _isHovered = false),
+          cursor: cursor,
+          onEnter: widget.isDisabled
+              ? null
+              : (_) => setState(() => _isHovered = true),
+          onExit: widget.isDisabled
+              ? null
+              : (_) => setState(() => _isHovered = false),
           child: GestureDetector(
-            onTapDown: (_) => setState(() => _isPressed = true),
-            onTapUp: (_) {
-              setState(() => _isPressed = false);
-              widget.onPressed?.call();
-            },
-            onTapCancel: () => setState(() => _isPressed = false),
+            onTapDown: widget.isDisabled
+                ? null
+                : (_) => setState(() => _isPressed = true),
+            onTapUp: widget.isDisabled
+                ? null
+                : (_) {
+                    setState(() => _isPressed = false);
+                    widget.onPressed?.call();
+                  },
+            onTapCancel: widget.isDisabled
+                ? null
+                : () => setState(() => _isPressed = false),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               decoration: BoxDecoration(
@@ -94,7 +117,9 @@ class _CalculatorButtonState extends ConsumerState<CalculatorButton> {
                 minWidth: CalculatorDimensions.buttonMinWidth,
                 minHeight: CalculatorDimensions.buttonMinHeight,
               ),
-              child: Center(child: _buildContent(foregroundColor, fontSize)),
+              child: Center(
+                child: _buildContent(foregroundColor, fontSize),
+              ),
             ),
           ),
         ),
@@ -126,7 +151,7 @@ class _CalculatorButtonState extends ConsumerState<CalculatorButton> {
     }
   }
 
-  double _getDefaultFontSize() {
+  double _getDefaultFontSize(CalculatorTheme theme) {
     switch (widget.type) {
       case CalcButtonType.number:
         return CalculatorFontSizes.numeric24;

@@ -5,7 +5,7 @@ import 'scientific_provider.dart';
 import '../../shared/theme/theme_provider.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/app_icons.dart';
-import 'buttons/scientific_buttons.dart';
+import '../../core/widgets/calc_button.dart';
 import 'flyouts/flyout_container.dart';
 
 /// Scientific calculator button panel - Microsoft Calculator layout
@@ -46,6 +46,23 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+
+  /// Build a toggleable button with visual feedback for selected state
+  Widget _buildToggleableButton({
+    String? text,
+    IconData? icon,
+    required bool isSelected,
+    required VoidCallback onPressed,
+  }) {
+    // Use different button type based on selection state
+    // This provides visual feedback without needing to wrap CalcButton
+    return CalcButton(
+      text: text,
+      icon: icon,
+      onPressed: onPressed,
+      type: isSelected ? CalcButtonType.emphasized : CalcButtonType.operator,
     );
   }
 
@@ -96,51 +113,36 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
     return Row(
       children: [
         // Shift button (2nd)
-        Expanded(
-          child: ScientificToggleIconButton(
-            icon: CalculatorIcons.shift,
-            isSelected: isShifted,
-            theme: theme,
-            onPressed: () {
-              ref.read(scientificShiftProvider.notifier).toggle();
-            },
-          ),
+        _buildToggleableButton(
+          icon: CalculatorIcons.shift,
+          isSelected: isShifted,
+          onPressed: () {
+            ref.read(scientificShiftProvider.notifier).toggle();
+          },
         ),
         // π
-        Expanded(
-          child: ScientificIconButton(
-            icon: CalculatorIcons.pi,
-            theme: theme,
-            onPressed: calculator.pi,
-            type: CalcButtonType.operator,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.pi,
+          onPressed: calculator.pi,
+          type: CalcButtonType.operator,
         ),
         // e (Euler) - uses text, not icon
-        Expanded(
-          child: ScientificTextButton(
-            text: 'e',
-            theme: theme,
-            onPressed: calculator.euler,
-            type: CalcButtonType.operator,
-          ),
+        CalcButton(
+          text: 'e',
+          onPressed: calculator.euler,
+          type: CalcButtonType.operator,
         ),
         // CE or C (shared position)
-        Expanded(
-          child: ScientificTextButton(
-            text: showCE ? 'CE' : 'C',
-            theme: theme,
-            onPressed: showCE ? calculator.clearEntry : calculator.clear,
-            type: CalcButtonType.operator,
-          ),
+        CalcButton(
+          text: showCE ? 'CE' : 'C',
+          onPressed: showCE ? calculator.clearEntry : calculator.clear,
+          type: CalcButtonType.operator,
         ),
         // Backspace
-        Expanded(
-          child: ScientificIconButton(
-            icon: CalculatorIcons.backspace,
-            theme: theme,
-            onPressed: calculator.backspace,
-            type: CalcButtonType.operator,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.backspace,
+          onPressed: calculator.backspace,
+          type: CalcButtonType.operator,
         ),
       ],
     );
@@ -157,30 +159,25 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
     return Row(
       children: [
         // DEG button (cycles through DEG/RAD/GRAD)
-        Expanded(
-          child: ScientificAngleButton(
-            label: scientificState.angleType.label,
-            theme: theme,
-            onPressed: () {
-              final notifier = ref.read(scientificProvider.notifier);
-              notifier.toggleAngleType();
-              calculator.setAngleType(scientificState.angleType.value);
-            },
-          ),
+        CalcButton(
+          text: scientificState.angleType.label,
+          onPressed: () {
+            final notifier = ref.read(scientificProvider.notifier);
+            notifier.toggleAngleType();
+            calculator.setAngleType(scientificState.angleType.value);
+          },
+          type: CalcButtonType.operator,
         ),
         const SizedBox(width: 2),
         // F-E button (toggle scientific notation)
-        Expanded(
-          child: ScientificToggleButton(
-            label: 'F-E',
-            isSelected: scientificState.isFEChecked,
-            theme: theme,
-            onPressed: () {
-              final notifier = ref.read(scientificProvider.notifier);
-              notifier.toggleFE();
-              calculator.toggleFE();
-            },
-          ),
+        _buildToggleableButton(
+          text: 'F-E',
+          isSelected: scientificState.isFEChecked,
+          onPressed: () {
+            final notifier = ref.read(scientificProvider.notifier);
+            notifier.toggleFE();
+            calculator.toggleFE();
+          },
         ),
         const SizedBox(width: 2),
         // Empty space (3 columns to align with memory row)
@@ -201,48 +198,38 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
     return Row(
       children: [
         // MC (Memory Clear)
-        Expanded(
-          child: ScientificMemoryButton(
-            icon: CalculatorIcons.memoryClear,
-            theme: theme,
-            onPressed: calculator.memoryClear,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.memoryClear,
+          type: CalcButtonType.memory,
+          onPressed: calculator.memoryClear,
         ),
         const SizedBox(width: 2),
         // MR (Memory Recall)
-        Expanded(
-          child: ScientificMemoryButton(
-            icon: CalculatorIcons.memoryRecall,
-            theme: theme,
-            onPressed: calculator.memoryRecall,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.memoryRecall,
+          type: CalcButtonType.memory,
+          onPressed: calculator.memoryRecall,
         ),
         const SizedBox(width: 2),
         // M+ (Memory Add)
-        Expanded(
-          child: ScientificMemoryButton(
-            icon: CalculatorIcons.memoryAdd,
-            theme: theme,
-            onPressed: calculator.memoryAdd,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.memoryAdd,
+          type: CalcButtonType.memory,
+          onPressed: calculator.memoryAdd,
         ),
         const SizedBox(width: 2),
         // M- (Memory Subtract)
-        Expanded(
-          child: ScientificMemoryButton(
-            icon: CalculatorIcons.memorySubtract,
-            theme: theme,
-            onPressed: calculator.memorySubtract,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.memorySubtract,
+          type: CalcButtonType.memory,
+          onPressed: calculator.memorySubtract,
         ),
         const SizedBox(width: 2),
         // MS (Memory Store)
-        Expanded(
-          child: ScientificMemoryButton(
-            icon: CalculatorIcons.memoryStore,
-            theme: theme,
-            onPressed: calculator.memoryStore,
-          ),
+        CalcButton(
+          icon: CalculatorIcons.memoryStore,
+          type: CalcButtonType.memory,
+          onPressed: calculator.memoryStore,
         ),
       ],
     );
@@ -285,51 +272,45 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
       return Column(
         children: [
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.square,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.square,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.squareRoot,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.squareRoot,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.power,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.power,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.powerOf10,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.pow10,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificFunctionTextButton(
+            child: CalcButton(
               text: 'log',
-              theme: theme,
-              onPressed: calculator.log,
               type: CalcButtonType.operator,
+              onPressed: calculator.log,
             ),
           ),
           Expanded(
-            child: ScientificFunctionTextButton(
+            child: CalcButton(
               text: 'ln',
-              theme: theme,
-              onPressed: calculator.ln,
               type: CalcButtonType.operator,
+              onPressed: calculator.ln,
             ),
           ),
         ],
@@ -338,51 +319,45 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
       return Column(
         children: [
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.cube,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.cube,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.cubeRoot,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.cubeRoot,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.yRoot,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.yRoot,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.powerOf2,
-              theme: theme,
+              type: CalcButtonType.operator,
               onPressed: calculator.pow2,
-              type: CalcButtonType.operator,
             ),
           ),
           Expanded(
-            child: ScientificFunctionTextButton(
+            child: CalcButton(
               text: 'logᵧ',
-              theme: theme,
-              onPressed: calculator.logBaseY,
               type: CalcButtonType.operator,
+              onPressed: calculator.logBaseY,
             ),
           ),
           Expanded(
-            child: ScientificIconButton(
+            child: CalcButton(
               icon: CalculatorIcons.powerOfE,
-              theme: theme,
-              onPressed: calculator.powE,
               type: CalcButtonType.operator,
+              onPressed: calculator.powE,
             ),
           ),
         ],
@@ -402,37 +377,25 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.reciprocal,
-                  theme: theme,
-                  onPressed: calculator.reciprocal,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.reciprocal,
+                onPressed: calculator.reciprocal,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.absoluteValue,
-                  theme: theme,
-                  onPressed: calculator.abs,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.absoluteValue,
+                onPressed: calculator.abs,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificFunctionTextButton(
-                  text: 'exp',
-                  theme: theme,
-                  onPressed: calculator.exp,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                text: 'exp',
+                onPressed: calculator.exp,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificFunctionTextButton(
-                  text: 'mod',
-                  theme: theme,
-                  onPressed: calculator.mod,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                text: 'mod',
+                onPressed: calculator.mod,
+                type: CalcButtonType.operator,
               ),
             ],
           ),
@@ -442,37 +405,25 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificFunctionTextButton(
-                  text: '(',
-                  theme: theme,
-                  onPressed: calculator.openParen,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                text: '(',
+                onPressed: calculator.openParen,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificFunctionTextButton(
-                  text: ')',
-                  theme: theme,
-                  onPressed: calculator.closeParen,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                text: ')',
+                onPressed: calculator.closeParen,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.factorial,
-                  theme: theme,
-                  onPressed: calculator.factorial,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.factorial,
+                onPressed: calculator.factorial,
+                type: CalcButtonType.operator,
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.divide,
-                  theme: theme,
-                  onPressed: calculator.divide,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.divide,
+                onPressed: calculator.divide,
+                type: CalcButtonType.operator,
               ),
             ],
           ),
@@ -482,34 +433,22 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '7',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(7),
-                ),
+              CalcButton(
+                text: '7',
+                onPressed: () => calculator.inputDigit(7),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '8',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(8),
-                ),
+              CalcButton(
+                text: '8',
+                onPressed: () => calculator.inputDigit(8),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '9',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(9),
-                ),
+              CalcButton(
+                text: '9',
+                onPressed: () => calculator.inputDigit(9),
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.multiply,
-                  theme: theme,
-                  onPressed: calculator.multiply,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.multiply,
+                onPressed: calculator.multiply,
+                type: CalcButtonType.operator,
               ),
             ],
           ),
@@ -519,34 +458,22 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '4',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(4),
-                ),
+              CalcButton(
+                text: '4',
+                onPressed: () => calculator.inputDigit(4),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '5',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(5),
-                ),
+              CalcButton(
+                text: '5',
+                onPressed: () => calculator.inputDigit(5),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '6',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(6),
-                ),
+              CalcButton(
+                text: '6',
+                onPressed: () => calculator.inputDigit(6),
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.minus,
-                  theme: theme,
-                  onPressed: calculator.subtract,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.minus,
+                onPressed: calculator.subtract,
+                type: CalcButtonType.operator,
               ),
             ],
           ),
@@ -556,34 +483,22 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '1',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(1),
-                ),
+              CalcButton(
+                text: '1',
+                onPressed: () => calculator.inputDigit(1),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '2',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(2),
-                ),
+              CalcButton(
+                text: '2',
+                onPressed: () => calculator.inputDigit(2),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '3',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(3),
-                ),
+              CalcButton(
+                text: '3',
+                onPressed: () => calculator.inputDigit(3),
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.plus,
-                  theme: theme,
-                  onPressed: calculator.add,
-                  type: CalcButtonType.operator,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.plus,
+                onPressed: calculator.add,
+                type: CalcButtonType.operator,
               ),
             ],
           ),
@@ -593,35 +508,23 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.negate,
-                  theme: theme,
-                  onPressed: calculator.inputNegate,
-                  type: CalcButtonType.number,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.negate,
+                onPressed: calculator.inputNegate,
+                type: CalcButtonType.number,
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '0',
-                  theme: theme,
-                  onPressed: () => calculator.inputDigit(0),
-                ),
+              CalcButton(
+                text: '0',
+                onPressed: () => calculator.inputDigit(0),
               ),
-              Expanded(
-                child: ScientificNumberButton(
-                  text: '.',
-                  theme: theme,
-                  onPressed: calculator.inputDecimal,
-                ),
+              CalcButton(
+                text: '.',
+                onPressed: calculator.inputDecimal,
               ),
-              Expanded(
-                child: ScientificIconButton(
-                  icon: CalculatorIcons.equals,
-                  theme: theme,
-                  onPressed: calculator.equals,
-                  type: CalcButtonType.emphasized,
-                ),
+              CalcButton(
+                icon: CalculatorIcons.equals,
+                onPressed: calculator.equals,
+                type: CalcButtonType.emphasized,
               ),
             ],
           ),

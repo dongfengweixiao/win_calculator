@@ -18,6 +18,7 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
     final calculator = ref.read(calculatorProvider.notifier);
     final theme = ref.watch(calculatorThemeProvider);
     final isShifted = ref.watch(scientificShiftProvider);
+    final memoryCount = ref.watch(calculatorProvider).memoryCount;
 
     return Container(
       color: theme.background,
@@ -28,7 +29,7 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
           Expanded(flex: 1, child: _buildAngleAndFERow(ref, calculator, theme)),
 
           // Row 1: Memory buttons (MC, MR, M+, M-, MS, M)
-          Expanded(flex: 1, child: _buildMemoryButtonsRow(calculator, theme)),
+          Expanded(flex: 1, child: _buildMemoryButtonsRow(calculator, theme, memoryCount)),
 
           // Row 2: Operator Panel - Trig and Func buttons
           Expanded(
@@ -208,6 +209,7 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
   Widget _buildMemoryButtonsRow(
     CalculatorNotifier calculator,
     CalculatorTheme theme,
+    int memoryCount,
   ) {
     return Row(
       children: [
@@ -217,6 +219,7 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
             icon: CalculatorIcons.memoryClear,
             type: CalcButtonType.memory,
             onPressed: calculator.memoryClear,
+            isDisabled: memoryCount == 0,
           ),
         ),
         const SizedBox(width: 2),
@@ -226,6 +229,7 @@ class ScientificButtonPanelLayout extends ConsumerWidget {
             icon: CalculatorIcons.memoryRecall,
             type: CalcButtonType.memory,
             onPressed: calculator.memoryRecall,
+            isDisabled: memoryCount == 0,
           ),
         ),
         const SizedBox(width: 2),

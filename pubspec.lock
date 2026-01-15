@@ -577,10 +577,10 @@ packages:
     dependency: "direct main"
     description:
       name: wincalc_engine
-      sha256: b318350f9585a011314eaa390bac76856bd877eb60c080f5a9057bfb0c05bfb0
+      sha256: "49b088c2cb5bdae2045831bc381c7349cfafea1ba3306053f98e0a8305c3fca6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   window_manager:
     dependency: "direct main"
     description:

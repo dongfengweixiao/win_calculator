@@ -90,7 +90,8 @@ class CalculatorNotifier extends Notifier<CalculatorState> {
         items.add(value);
       }
     }
-    return items;
+    // Return a new list to ensure state change is detected
+    return List<String>.unmodifiable(items);
   }
 
   List<HistoryItem> _getHistoryItems() {

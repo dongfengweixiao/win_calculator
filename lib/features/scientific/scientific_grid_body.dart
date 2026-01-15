@@ -35,6 +35,7 @@ class ScientificGridBody extends ConsumerWidget {
     final isShifted = ref.watch(scientificShiftProvider);
     final showHistoryPanel = ref.watch(showHistoryPanelProvider);
     final navState = ref.watch(navigationProvider);
+    final memoryCount = ref.watch(calculatorProvider).memoryCount;
 
     return LayoutGrid(
       // 5 equal columns
@@ -86,6 +87,7 @@ class ScientificGridBody extends ConsumerWidget {
                   icon: CalculatorIcons.memoryClear,
                   type: CalcButtonType.memory,
                   onPressed: calculator.memoryClear,
+                  isDisabled: memoryCount == 0,
                 ),
               ),
               Expanded(
@@ -93,6 +95,7 @@ class ScientificGridBody extends ConsumerWidget {
                   icon: CalculatorIcons.memoryRecall,
                   type: CalcButtonType.memory,
                   onPressed: calculator.memoryRecall,
+                  isDisabled: memoryCount == 0,
                 ),
               ),
               Expanded(
@@ -123,6 +126,7 @@ class ScientificGridBody extends ConsumerWidget {
                     text: 'M',
                     type: CalcButtonType.memory,
                     onPressed: calculator.memoryRecall,
+                    isDisabled: memoryCount == 0,
                   ),
                 ),
             ],

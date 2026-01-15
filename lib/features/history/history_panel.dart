@@ -380,10 +380,14 @@ class _MemoryList extends ConsumerWidget {
     }
 
     return ListView.builder(
+      key: ValueKey(memoryItems.length), // Force rebuild when memory items count changes
       padding: const EdgeInsets.symmetric(horizontal: 8),
       itemCount: memoryItems.length,
       itemBuilder: (context, index) {
+        // Use value + index as key to ensure uniqueness even if values are the same
+        final itemKey = 'memory_${memoryItems[index]}_$index';
         return _MemoryItem(
+          key: ValueKey(itemKey),
           value: HistoryFormatter.formatMemoryValue(memoryItems[index]),
           theme: theme,
           onTap: () {
@@ -418,6 +422,7 @@ class _MemoryItem extends StatefulWidget {
   final VoidCallback onSubtract;
 
   const _MemoryItem({
+    super.key, // Add key parameter support
     required this.value,
     required this.theme,
     required this.onTap,

@@ -30,6 +30,7 @@ class StandardGridBody extends ConsumerWidget {
     final theme = ref.watch(calculatorThemeProvider);
     final showHistoryPanel = ref.watch(showHistoryPanelProvider);
     final navState = ref.watch(navigationProvider);
+    final memoryCount = ref.watch(calculatorProvider).memoryCount;
 
     return LayoutGrid(
       // 4 equal columns
@@ -73,6 +74,7 @@ class StandardGridBody extends ConsumerWidget {
                   text: 'MC',
                   type: CalcButtonType.memory,
                   onPressed: calculator.memoryClear,
+                  isDisabled: memoryCount == 0,
                 ),
               ),
               Expanded(
@@ -80,6 +82,7 @@ class StandardGridBody extends ConsumerWidget {
                   text: 'MR',
                   type: CalcButtonType.memory,
                   onPressed: calculator.memoryRecall,
+                  isDisabled: memoryCount == 0,
                 ),
               ),
               Expanded(
@@ -110,6 +113,7 @@ class StandardGridBody extends ConsumerWidget {
                     text: 'M',
                     type: CalcButtonType.memory,
                     onPressed: calculator.memoryRecall,
+                    isDisabled: memoryCount == 0,
                   ),
                 ),
             ],

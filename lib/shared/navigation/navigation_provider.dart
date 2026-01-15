@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/app_icons.dart';
 import '../../core/domain/entities/view_mode.dart';
 import '../../core/services/layout/responsive_layout_service.dart';
+import '../../core/services/persistence/preferences_service.dart';
 
 /// Navigation category for the sidebar
 class NavCategory {
@@ -82,7 +83,12 @@ class NavigationState {
 class NavigationNotifier extends Notifier<NavigationState> {
   @override
   NavigationState build() {
-    return const NavigationState();
+    // Load the last used view mode from preferences
+    final savedMode = PreferencesService.getLastViewMode();
+
+    return NavigationState(
+      currentMode: savedMode ?? ViewMode.standard,
+    );
   }
 
   /// Toggle drawer open/close
@@ -103,6 +109,8 @@ class NavigationNotifier extends Notifier<NavigationState> {
   /// Set current mode
   void setMode(ViewMode mode) {
     state = state.copyWith(currentMode: mode, isDrawerOpen: false);
+    // Save the selected mode to preferences
+    PreferencesService.saveLastViewMode(mode);
   }
 
   /// Toggle history panel visibility

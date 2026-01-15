@@ -45,6 +45,9 @@ dependencies:
   # Window management
   window_manager: ^0.3.9
 
+  # Persistence
+  shared_preferences: ^2.5.4
+
   # Internationalization
   intl: any
   flutter_layout_grid: ^2.0.8

@@ -6,11 +6,15 @@ import 'l10n/l10n.dart';
 import 'l10n/app_localizations.dart';
 import 'shared/theme/theme_provider.dart';
 import 'features/calculator/calculator_view.dart';
+import 'core/services/persistence/preferences_service.dart';
 
 void main() async {
   // Initialize window manager
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+
+  // Initialize preferences service
+  await PreferencesService.init();
 
   // Set window options
   WindowOptions windowOptions = WindowOptions(

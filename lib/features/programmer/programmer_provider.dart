@@ -110,6 +110,8 @@ class ProgrammerState {
 
 /// Programmer calculator state notifier
 class ProgrammerNotifier extends Notifier<ProgrammerState> {
+  bool _initialized = false;
+
   @override
   ProgrammerState build() {
     return ProgrammerState(
@@ -123,6 +125,22 @@ class ProgrammerNotifier extends Notifier<ProgrammerState> {
       shiftMode: ShiftMode.logical,
       bitValues: List.generate(64, (index) => false),
     );
+  }
+
+  /// Initialize programmer mode settings when activated
+  /// This should be called when switching to programmer mode
+  void initialize() {
+    if (!_initialized) {
+      final calculator = ref.read(calculatorProvider.notifier);
+
+      // Set default word size to QWORD (64-bit)
+      calculator.setQword();
+
+      // Set radix to match the default base (HEX)
+      _setRadixForBase(state.currentBase);
+
+      _initialized = true;
+    }
   }
 
   /// Update all base values directly from calculator engine
@@ -278,6 +296,8 @@ class ProgrammerNotifier extends Notifier<ProgrammerState> {
   /// Set current base
   void setCurrentBase(ProgrammerBase base) {
     state = state.copyWith(currentBase: base);
+    // Sync radix to calculator engine
+    _setRadixForBase(base);
   }
 
   /// Cycle word size and sync with calculator engine

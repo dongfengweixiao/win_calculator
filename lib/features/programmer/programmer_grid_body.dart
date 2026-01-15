@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wincalc_engine/wincalc_engine.dart';
 import '../calculator/calculator_provider.dart';
 import '../calculator/display_panel.dart';
 import '../../shared/theme/theme_provider.dart';
@@ -9,6 +8,7 @@ import '../../shared/navigation/navigation_provider.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/app_icons.dart';
 import '../../core/widgets/calc_button.dart';
+import '../../core/domain/entities/view_mode.dart';
 import 'programmer_provider.dart';
 import 'services/programmer_button_service.dart';
 import 'flyouts/bitwise_flyout.dart';
@@ -42,6 +42,26 @@ class ProgrammerGridBody extends ConsumerWidget {
     final buttonService = ProgrammerButtonService(ref);
     final showHistoryPanel = ref.watch(showHistoryPanelProvider);
     final navState = ref.watch(navigationProvider);
+
+    // Initialize radix when switching to programmer mode
+    ref.listen<NavigationState>(navigationProvider, (previous, next) {
+      final previousMode = previous?.currentMode;
+      final currentMode = next.currentMode;
+
+      // When switching to programmer mode, initialize radix
+      if (currentMode == ViewMode.programmer && previousMode != ViewMode.programmer) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(programmerProvider.notifier).initialize();
+        });
+      }
+    });
+
+    // Also initialize if currently in programmer mode (app startup case)
+    if (navState.currentMode == ViewMode.programmer) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(programmerProvider.notifier).initialize();
+      });
+    }
 
     return LayoutGrid(
       // 5 equal columns
@@ -232,25 +252,8 @@ class ProgrammerGridBody extends ConsumerWidget {
 
   /// Handle base selection (HEX/DEC/OCT/BIN)
   void _handleBaseSelected(WidgetRef ref, ProgrammerBase base) {
-    // Update programmer provider state
+    // Update programmer provider state (will also sync radix to calculator engine)
     ref.read(programmerProvider.notifier).setCurrentBase(base);
-
-    // Set the calculator engine radix to enable proper digit input
-    final calculator = ref.read(calculatorProvider.notifier);
-    switch (base) {
-      case ProgrammerBase.hex:
-        calculator.setRadix(CalcRadixType.CALC_RADIX_HEX);
-        break;
-      case ProgrammerBase.dec:
-        calculator.setRadix(CalcRadixType.CALC_RADIX_DECIMAL);
-        break;
-      case ProgrammerBase.oct:
-        calculator.setRadix(CalcRadixType.CALC_RADIX_OCTAL);
-        break;
-      case ProgrammerBase.bin:
-        calculator.setRadix(CalcRadixType.CALC_RADIX_BINARY);
-        break;
-    }
   }
 
   /// Build base conversion button (HEX/DEC/OCT)

@@ -134,11 +134,6 @@ class CalculatorNotifier extends Notifier<CalculatorState> {
   void setMode(CalculatorMode mode) {
     _service.setMode(mode);
 
-    // When entering programmer mode, default to QWORD (64-bit)
-    if (mode == CalculatorMode.programmer) {
-      _service.sendCommand(CMD_QWORD);
-    }
-
     // Update state with new mode and refresh history
     state = state.copyWith(mode: mode);
     state = _updateState();

@@ -298,6 +298,8 @@ class ProgrammerNotifier extends Notifier<ProgrammerState> {
     state = state.copyWith(currentBase: base);
     // Sync radix to calculator engine
     _setRadixForBase(base);
+    // Update all base values from calculator engine to sync display
+    updateValuesFromCalculator();
   }
 
   /// Cycle word size and sync with calculator engine

@@ -63,6 +63,16 @@ class ProgrammerGridBody extends ConsumerWidget {
       });
     }
 
+    // Listen to calculator state changes and update programmer display values
+    // This ensures that when users input numbers, all base displays are synchronized
+    ref.listen<CalculatorState>(calculatorProvider, (previous, next) {
+      // Only update when in programmer mode and display value changed
+      if (navState.currentMode == ViewMode.programmer &&
+          previous?.display != next.display) {
+        ref.read(programmerProvider.notifier).updateValuesFromCalculator();
+      }
+    });
+
     return LayoutGrid(
       // 5 equal columns
       columnSizes: [1.fr, 1.fr, 1.fr, 1.fr, 1.fr],

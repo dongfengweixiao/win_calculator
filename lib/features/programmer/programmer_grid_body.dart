@@ -664,7 +664,7 @@ class ProgrammerGridBody extends ConsumerWidget {
   CalcButtonType _getButtonType(String label) {
     if (label == '=') {
       return CalcButtonType.emphasized;
-    } else if (['+', '-', '×', '÷', '%', '<<', '>>', '(', ')'].contains(label)) {
+    } else if (['+', '-', '×', '÷', '%', '<<', '>>', '(', ')', 'DEL'].contains(label)) {
       return CalcButtonType.operator;
     } else if (label == 'C/CE') {
       // C/CE button is always operator style (clear button)

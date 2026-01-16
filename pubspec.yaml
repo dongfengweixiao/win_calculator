@@ -51,6 +51,7 @@ dependencies:
   # Internationalization
   intl: any
   flutter_layout_grid: ^2.0.8
+  chinese_font_library: ^1.2.0
 
 dev_dependencies:
   flutter_test:

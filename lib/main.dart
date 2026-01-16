@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:chinese_font_library/chinese_font_library.dart';
 import 'l10n/l10n.dart';
 import 'l10n/app_localizations.dart';
 import 'shared/theme/theme_provider.dart';
@@ -39,7 +40,7 @@ class CalculatorApp extends ConsumerWidget {
     return MaterialApp(
       title: 'WinCalc',
       debugShowCheckedModeBanner: false,
-      theme: themeState.theme.toThemeData(),
+      theme: themeState.theme.toThemeData().useSystemChineseFont(themeState.theme.brightness),
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -21,6 +21,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dateCalculationMode => '日期计算';
 
   @override
+  String get volumeConverterMode => '体积';
+
+  @override
   String get history => '历史记录';
 
   @override
@@ -166,4 +169,91 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get days_plural => '天';
+
+  @override
+  String get volumeConverterTitle => '体积转换';
+
+  @override
+  String get fromUnit => '从';
+
+  @override
+  String get toUnit => '到';
+
+  @override
+  String get cubicMeters => '立方米';
+
+  @override
+  String get cubicCentimeters => '立方厘米';
+
+  @override
+  String get cubicMillimeters => '立方毫米';
+
+  @override
+  String get cubicYards => '立方码';
+
+  @override
+  String get liters => '升';
+
+  @override
+  String get milliliters => '毫升';
+
+  @override
+  String get cubicFeet => '立方英尺';
+
+  @override
+  String get cubicInches => '立方英寸';
+
+  @override
+  String get usGallons => '美制加仑';
+
+  @override
+  String get ukGallons => '英制加仑';
+
+  @override
+  String get usFluidOunces => '美制液盎司';
+
+  @override
+  String get ukFluidOunces => '英制液盎司';
+
+  @override
+  String get tablespoons => '汤匙';
+
+  @override
+  String get teaspoons => '茶匙';
+
+  @override
+  String get usQuarts => '美制夸脱';
+
+  @override
+  String get usPints => '美制品脱';
+
+  @override
+  String get usCups => '美制杯';
+
+  @override
+  String get imperialGallons => '英制加仑';
+
+  @override
+  String get imperialQuarts => '英制夸脱';
+
+  @override
+  String get imperialPints => '英制品脱';
+
+  @override
+  String get imperialTablespoons => '英制汤匙';
+
+  @override
+  String get imperialTeaspoons => '英制茶匙';
+
+  @override
+  String get imperialFluidOunces => '英制液盎司';
+
+  @override
+  String get usTablespoons => '美制汤匙';
+
+  @override
+  String get usTeaspoons => '美制茶匙';
+
+  @override
+  String get metricCups => '公制杯';
 }

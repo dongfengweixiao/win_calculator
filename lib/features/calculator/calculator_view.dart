@@ -10,6 +10,7 @@ import '../programmer/programmer_grid_body.dart';
 import 'standard_grid_body.dart';
 import '../scientific/scientific_grid_body.dart';
 import '../date_calculation/date_calculation_body.dart';
+import '../volume_converter/volume_converter_body.dart';
 import 'navigation_drawer.dart';
 import '../history/history_panel.dart';
 
@@ -57,8 +58,10 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
             final showHistoryPanel = ResponsiveLayoutService.shouldShowHistoryPanel(constraints.maxWidth);
 
             // Determine if history panel should be shown
-            // History/Memory panel is not needed for date calculation mode
-            final shouldShowHistoryPanel = showHistoryPanel && currentMode != ViewMode.dateCalculation;
+            // History/Memory panel is not needed for date calculation and converter modes
+            final shouldShowHistoryPanel = showHistoryPanel &&
+                currentMode != ViewMode.dateCalculation &&
+                currentMode != ViewMode.volumeConverter;
 
             return Row(
               children: [
@@ -108,6 +111,13 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
     // For date calculation mode
     if (currentMode == ViewMode.dateCalculation) {
       return DateCalculationBody(
+        onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
+      );
+    }
+
+    // For volume converter mode
+    if (currentMode == ViewMode.volumeConverter) {
+      return VolumeConverterBody(
         onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
       );
     }

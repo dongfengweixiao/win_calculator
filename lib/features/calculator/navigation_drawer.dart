@@ -109,6 +109,8 @@ class CalculatorNavigationDrawer extends ConsumerWidget {
         return l10n.programmerMode;
       case 'dateCalculationMode':
         return l10n.dateCalculationMode;
+      case 'volumeConverterMode':
+        return l10n.volumeConverterMode;
       default:
         return mode.localizationKey;
     }

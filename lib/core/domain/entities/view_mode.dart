@@ -12,6 +12,9 @@ enum ViewMode {
 
   /// Date calculation mode
   dateCalculation,
+
+  /// Volume converter mode
+  volumeConverter,
 }
 
 /// Extension on ViewMode to provide conversion and display methods
@@ -27,6 +30,8 @@ extension ViewModeExtension on ViewMode {
         return 'programmerMode';
       case ViewMode.dateCalculation:
         return 'dateCalculationMode';
+      case ViewMode.volumeConverter:
+        return 'volumeConverterMode';
     }
   }
 
@@ -41,6 +46,8 @@ extension ViewModeExtension on ViewMode {
         return 'PROG';
       case ViewMode.dateCalculation:
         return 'DATE';
+      case ViewMode.volumeConverter:
+        return 'VOLUME';
     }
   }
 }

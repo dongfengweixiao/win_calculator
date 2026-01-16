@@ -57,7 +57,7 @@ class CalculatorIcons {
   static const IconData settings = IconData(0xE71B, fontFamily: _fontFamily);
 
   /// Volume converter
-  static const IconData volume = IconData(0xE72B, fontFamily: _fontFamily);
+  static const IconData volume = IconData(0xF1AA, fontFamily: _fontFamily);
 
   /// Data converter
   static const IconData data = IconData(0xE72C, fontFamily: _fontFamily);

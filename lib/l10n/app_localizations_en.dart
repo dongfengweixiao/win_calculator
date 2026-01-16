@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dateCalculationMode => 'Date Calculation';
 
   @override
+  String get volumeConverterMode => 'Volume';
+
+  @override
   String get history => 'History';
 
   @override
@@ -167,4 +170,91 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get days_plural => 'days';
+
+  @override
+  String get volumeConverterTitle => 'Volume Converter';
+
+  @override
+  String get fromUnit => 'From';
+
+  @override
+  String get toUnit => 'To';
+
+  @override
+  String get cubicMeters => 'Cubic Meters';
+
+  @override
+  String get cubicCentimeters => 'Cubic Centimeters';
+
+  @override
+  String get cubicMillimeters => 'Cubic Millimeters';
+
+  @override
+  String get cubicYards => 'Cubic Yards';
+
+  @override
+  String get liters => 'Liters';
+
+  @override
+  String get milliliters => 'Milliliters';
+
+  @override
+  String get cubicFeet => 'Cubic Feet';
+
+  @override
+  String get cubicInches => 'Cubic Inches';
+
+  @override
+  String get usGallons => 'US Gallons';
+
+  @override
+  String get ukGallons => 'UK Gallons';
+
+  @override
+  String get usFluidOunces => 'US Fluid Ounces';
+
+  @override
+  String get ukFluidOunces => 'UK Fluid Ounces';
+
+  @override
+  String get tablespoons => 'Tablespoons';
+
+  @override
+  String get teaspoons => 'Teaspoons';
+
+  @override
+  String get usQuarts => 'US Quarts';
+
+  @override
+  String get usPints => 'US Pints';
+
+  @override
+  String get usCups => 'US Cups';
+
+  @override
+  String get imperialGallons => 'Imperial Gallons';
+
+  @override
+  String get imperialQuarts => 'Imperial Quarts';
+
+  @override
+  String get imperialPints => 'Imperial Pints';
+
+  @override
+  String get imperialTablespoons => 'Imperial Tablespoons';
+
+  @override
+  String get imperialTeaspoons => 'Imperial Teaspoons';
+
+  @override
+  String get imperialFluidOunces => 'Imperial Fluid Ounces';
+
+  @override
+  String get usTablespoons => 'US Tablespoons';
+
+  @override
+  String get usTeaspoons => 'US Teaspoons';
+
+  @override
+  String get metricCups => 'Metric Cups';
 }

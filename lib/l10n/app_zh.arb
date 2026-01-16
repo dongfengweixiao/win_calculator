@@ -16,6 +16,10 @@
   "@dateCalculationMode": {
     "description": "Name for the date calculation mode"
   },
+  "volumeConverterMode": "体积",
+  "@volumeConverterMode": {
+    "description": "Name for the volume converter mode"
+  },
   "history": "历史记录",
   "@history": {
     "description": "History panel tab label"
@@ -211,5 +215,121 @@
   "days_plural": "天",
   "@days_plural": {
     "description": "Plural form of days"
+  },
+  "volumeConverterTitle": "体积转换",
+  "@volumeConverterTitle": {
+    "description": "Title for volume converter page"
+  },
+  "fromUnit": "从",
+  "@fromUnit": {
+    "description": "Label for from unit field"
+  },
+  "toUnit": "到",
+  "@toUnit": {
+    "description": "Label for to unit field"
+  },
+  "cubicMeters": "立方米",
+  "@cubicMeters": {
+    "description": "Cubic meters unit"
+  },
+  "cubicCentimeters": "立方厘米",
+  "@cubicCentimeters": {
+    "description": "Cubic centimeters unit"
+  },
+  "cubicMillimeters": "立方毫米",
+  "@cubicMillimeters": {
+    "description": "Cubic millimeters unit"
+  },
+  "cubicYards": "立方码",
+  "@cubicYards": {
+    "description": "Cubic yards unit"
+  },
+  "liters": "升",
+  "@liters": {
+    "description": "Liters unit"
+  },
+  "milliliters": "毫升",
+  "@milliliters": {
+    "description": "Milliliters unit"
+  },
+  "cubicFeet": "立方英尺",
+  "@cubicFeet": {
+    "description": "Cubic feet unit"
+  },
+  "cubicInches": "立方英寸",
+  "@cubicInches": {
+    "description": "Cubic inches unit"
+  },
+  "usGallons": "美制加仑",
+  "@usGallons": {
+    "description": "US gallons unit"
+  },
+  "ukGallons": "英制加仑",
+  "@ukGallons": {
+    "description": "UK gallons unit"
+  },
+  "usFluidOunces": "美制液盎司",
+  "@usFluidOunces": {
+    "description": "US fluid ounces unit"
+  },
+  "ukFluidOunces": "英制液盎司",
+  "@ukFluidOunces": {
+    "description": "UK fluid ounces unit"
+  },
+  "tablespoons": "汤匙",
+  "@tablespoons": {
+    "description": "Tablespoons unit"
+  },
+  "teaspoons": "茶匙",
+  "@teaspoons": {
+    "description": "Teaspoons unit"
+  },
+  "usQuarts": "美制夸脱",
+  "@usQuarts": {
+    "description": "US quarts unit"
+  },
+  "usPints": "美制品脱",
+  "@usPints": {
+    "description": "US pints unit"
+  },
+  "usCups": "美制杯",
+  "@usCups": {
+    "description": "US cups unit"
+  },
+  "imperialGallons": "英制加仑",
+  "@imperialGallons": {
+    "description": "Imperial gallons unit"
+  },
+  "imperialQuarts": "英制夸脱",
+  "@imperialQuarts": {
+    "description": "Imperial quarts unit"
+  },
+  "imperialPints": "英制品脱",
+  "@imperialPints": {
+    "description": "Imperial pints unit"
+  },
+  "imperialTablespoons": "英制汤匙",
+  "@imperialTablespoons": {
+    "description": "Imperial tablespoons unit"
+  },
+  "imperialTeaspoons": "英制茶匙",
+  "@imperialTeaspoons": {
+    "description": "Imperial teaspoons unit"
+  },
+  "imperialFluidOunces": "英制液盎司",
+  "@imperialFluidOunces": {
+    "description": "Imperial fluid ounces unit"
+  },
+  "usTablespoons": "美制汤匙",
+  "@usTablespoons": {
+    "description": "US tablespoons unit"
+  },
+  "usTeaspoons": "美制茶匙",
+  "@usTeaspoons": {
+    "description": "US teaspoons unit"
+  },
+  "metricCups": "公制杯",
+  "@metricCups": {
+    "description": "Metric cups unit"
   }
 }

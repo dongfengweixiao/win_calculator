@@ -5,7 +5,7 @@ import '../../domain/entities/view_mode.dart';
 /// Handles conversion between ViewMode and CalculatorMode
 class ModeConverter {
   /// Convert ViewMode to CalculatorMode
-  /// Note: Date calculation mode returns standard mode as it doesn't use calculator engine
+  /// Note: Date calculation and converter modes return standard mode as they don't use calculator engine
   static CalculatorMode viewToCalculator(ViewMode viewMode) {
     switch (viewMode) {
       case ViewMode.standard:
@@ -15,7 +15,8 @@ class ModeConverter {
       case ViewMode.programmer:
         return CalculatorMode.programmer;
       case ViewMode.dateCalculation:
-        // Date calculation doesn't use calculator engine, return standard mode
+      case ViewMode.volumeConverter:
+        // These modes don't use calculator engine, return standard mode
         return CalculatorMode.standard;
     }
   }

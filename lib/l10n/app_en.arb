@@ -16,6 +16,10 @@
   "@dateCalculationMode": {
     "description": "Name for the date calculation mode"
   },
+  "volumeConverterMode": "Volume",
+  "@volumeConverterMode": {
+    "description": "Name for the volume converter mode"
+  },
   "history": "History",
   "@history": {
     "description": "History panel tab label"
@@ -211,5 +215,121 @@
   "days_plural": "days",
   "@days_plural": {
     "description": "Plural form of days"
+  },
+  "volumeConverterTitle": "Volume Converter",
+  "@volumeConverterTitle": {
+    "description": "Title for volume converter page"
+  },
+  "fromUnit": "From",
+  "@fromUnit": {
+    "description": "Label for from unit field"
+  },
+  "toUnit": "To",
+  "@toUnit": {
+    "description": "Label for to unit field"
+  },
+  "cubicMeters": "Cubic Meters",
+  "@cubicMeters": {
+    "description": "Cubic meters unit"
+  },
+  "cubicCentimeters": "Cubic Centimeters",
+  "@cubicCentimeters": {
+    "description": "Cubic centimeters unit"
+  },
+  "cubicMillimeters": "Cubic Millimeters",
+  "@cubicMillimeters": {
+    "description": "Cubic millimeters unit"
+  },
+  "cubicYards": "Cubic Yards",
+  "@cubicYards": {
+    "description": "Cubic yards unit"
+  },
+  "liters": "Liters",
+  "@liters": {
+    "description": "Liters unit"
+  },
+  "milliliters": "Milliliters",
+  "@milliliters": {
+    "description": "Milliliters unit"
+  },
+  "cubicFeet": "Cubic Feet",
+  "@cubicFeet": {
+    "description": "Cubic feet unit"
+  },
+  "cubicInches": "Cubic Inches",
+  "@cubicInches": {
+    "description": "Cubic inches unit"
+  },
+  "usGallons": "US Gallons",
+  "@usGallons": {
+    "description": "US gallons unit"
+  },
+  "ukGallons": "UK Gallons",
+  "@ukGallons": {
+    "description": "UK gallons unit"
+  },
+  "usFluidOunces": "US Fluid Ounces",
+  "@usFluidOunces": {
+    "description": "US fluid ounces unit"
+  },
+  "ukFluidOunces": "UK Fluid Ounces",
+  "@ukFluidOunces": {
+    "description": "UK fluid ounces unit"
+  },
+  "tablespoons": "Tablespoons",
+  "@tablespoons": {
+    "description": "Tablespoons unit"
+  },
+  "teaspoons": "Teaspoons",
+  "@teaspoons": {
+    "description": "Teaspoons unit"
+  },
+  "usQuarts": "US Quarts",
+  "@usQuarts": {
+    "description": "US quarts unit"
+  },
+  "usPints": "US Pints",
+  "@usPints": {
+    "description": "US pints unit"
+  },
+  "usCups": "US Cups",
+  "@usCups": {
+    "description": "US cups unit"
+  },
+  "imperialGallons": "Imperial Gallons",
+  "@imperialGallons": {
+    "description": "Imperial gallons unit"
+  },
+  "imperialQuarts": "Imperial Quarts",
+  "@imperialQuarts": {
+    "description": "Imperial quarts unit"
+  },
+  "imperialPints": "Imperial Pints",
+  "@imperialPints": {
+    "description": "Imperial pints unit"
+  },
+  "imperialTablespoons": "Imperial Tablespoons",
+  "@imperialTablespoons": {
+    "description": "Imperial tablespoons unit"
+  },
+  "imperialTeaspoons": "Imperial Teaspoons",
+  "@imperialTeaspoons": {
+    "description": "Imperial teaspoons unit"
+  },
+  "imperialFluidOunces": "Imperial Fluid Ounces",
+  "@imperialFluidOunces": {
+    "description": "Imperial fluid ounces unit"
+  },
+  "usTablespoons": "US Tablespoons",
+  "@usTablespoons": {
+    "description": "US tablespoons unit"
+  },
+  "usTeaspoons": "US Teaspoons",
+  "@usTeaspoons": {
+    "description": "US teaspoons unit"
+  },
+  "metricCups": "Metric Cups",
+  "@metricCups": {
+    "description": "Metric cups unit"
   }
 }

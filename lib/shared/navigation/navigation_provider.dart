@@ -55,7 +55,16 @@ final navCategories = [
       ),
     ],
   ),
-  // Converters will be added later
+  const NavCategoryGroup(
+    name: '转换器',
+    categories: [
+      NavCategory(
+        name: '体积',
+        icon: CalculatorIcons.volume,
+        viewMode: ViewMode.volumeConverter,
+      ),
+    ],
+  ),
 ];
 
 /// Navigation state

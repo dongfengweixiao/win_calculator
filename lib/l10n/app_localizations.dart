@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Date Calculation'**
   String get dateCalculationMode;
 
+  /// Name for the volume converter mode
+  ///
+  /// In en, this message translates to:
+  /// **'Volume'**
+  String get volumeConverterMode;
+
   /// History panel tab label
   ///
   /// In en, this message translates to:
@@ -415,6 +421,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'days'**
   String get days_plural;
+
+  /// Title for volume converter page
+  ///
+  /// In en, this message translates to:
+  /// **'Volume Converter'**
+  String get volumeConverterTitle;
+
+  /// Label for from unit field
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get fromUnit;
+
+  /// Label for to unit field
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get toUnit;
+
+  /// Cubic meters unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Meters'**
+  String get cubicMeters;
+
+  /// Cubic centimeters unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Centimeters'**
+  String get cubicCentimeters;
+
+  /// Cubic millimeters unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Millimeters'**
+  String get cubicMillimeters;
+
+  /// Cubic yards unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Yards'**
+  String get cubicYards;
+
+  /// Liters unit
+  ///
+  /// In en, this message translates to:
+  /// **'Liters'**
+  String get liters;
+
+  /// Milliliters unit
+  ///
+  /// In en, this message translates to:
+  /// **'Milliliters'**
+  String get milliliters;
+
+  /// Cubic feet unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Feet'**
+  String get cubicFeet;
+
+  /// Cubic inches unit
+  ///
+  /// In en, this message translates to:
+  /// **'Cubic Inches'**
+  String get cubicInches;
+
+  /// US gallons unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Gallons'**
+  String get usGallons;
+
+  /// UK gallons unit
+  ///
+  /// In en, this message translates to:
+  /// **'UK Gallons'**
+  String get ukGallons;
+
+  /// US fluid ounces unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Fluid Ounces'**
+  String get usFluidOunces;
+
+  /// UK fluid ounces unit
+  ///
+  /// In en, this message translates to:
+  /// **'UK Fluid Ounces'**
+  String get ukFluidOunces;
+
+  /// Tablespoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'Tablespoons'**
+  String get tablespoons;
+
+  /// Teaspoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'Teaspoons'**
+  String get teaspoons;
+
+  /// US quarts unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Quarts'**
+  String get usQuarts;
+
+  /// US pints unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Pints'**
+  String get usPints;
+
+  /// US cups unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Cups'**
+  String get usCups;
+
+  /// Imperial gallons unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Gallons'**
+  String get imperialGallons;
+
+  /// Imperial quarts unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Quarts'**
+  String get imperialQuarts;
+
+  /// Imperial pints unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Pints'**
+  String get imperialPints;
+
+  /// Imperial tablespoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Tablespoons'**
+  String get imperialTablespoons;
+
+  /// Imperial teaspoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Teaspoons'**
+  String get imperialTeaspoons;
+
+  /// Imperial fluid ounces unit
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial Fluid Ounces'**
+  String get imperialFluidOunces;
+
+  /// US tablespoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Tablespoons'**
+  String get usTablespoons;
+
+  /// US teaspoons unit
+  ///
+  /// In en, this message translates to:
+  /// **'US Teaspoons'**
+  String get usTeaspoons;
+
+  /// Metric cups unit
+  ///
+  /// In en, this message translates to:
+  /// **'Metric Cups'**
+  String get metricCups;
 }
 
 class _AppLocalizationsDelegate

@@ -7,11 +7,11 @@ enum ViewMode {
   /// Scientific calculator mode
   scientific,
 
-  /// Programmer calculator mode (not yet implemented)
+  /// Programmer calculator mode
   programmer,
 
-  // Date calculation mode (not yet implemented)
-  // dateCalculation,
+  /// Date calculation mode
+  dateCalculation,
 }
 
 /// Extension on ViewMode to provide conversion and display methods
@@ -25,6 +25,8 @@ extension ViewModeExtension on ViewMode {
         return 'scientificMode';
       case ViewMode.programmer:
         return 'programmerMode';
+      case ViewMode.dateCalculation:
+        return 'dateCalculationMode';
     }
   }
 
@@ -37,6 +39,8 @@ extension ViewModeExtension on ViewMode {
         return 'SCI';
       case ViewMode.programmer:
         return 'PROG';
+      case ViewMode.dateCalculation:
+        return 'DATE';
     }
   }
 }

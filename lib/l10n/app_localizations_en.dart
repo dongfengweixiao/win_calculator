@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get programmerMode => 'Programmer';
 
   @override
+  String get dateCalculationMode => 'Date Calculation';
+
+  @override
   String get history => 'History';
 
   @override
@@ -94,4 +97,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get byte => 'BYTE';
+
+  @override
+  String get dateCalculationTitle => 'Date Calculation';
+
+  @override
+  String get calculateDifferenceBetweenDates =>
+      'Calculate Difference Between Dates';
+
+  @override
+  String get addOrSubtractFromDate => 'Add or Subtract from Date';
+
+  @override
+  String get fromDate => 'From Date';
+
+  @override
+  String get toDate => 'To Date';
+
+  @override
+  String get startDate => 'Start Date';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get subtract => 'Subtract';
+
+  @override
+  String get years => 'Years';
+
+  @override
+  String get months => 'Months';
+
+  @override
+  String get days => 'Days';
+
+  @override
+  String get difference => 'Difference';
+
+  @override
+  String get result => 'Result';
+
+  @override
+  String get selectDate => 'Select date';
+
+  @override
+  String get selectBothDates => 'Select both dates';
+
+  @override
+  String get year => 'year';
+
+  @override
+  String get years_plural => 'years';
+
+  @override
+  String get month => 'month';
+
+  @override
+  String get months_plural => 'months';
+
+  @override
+  String get week => 'week';
+
+  @override
+  String get weeks_plural => 'weeks';
+
+  @override
+  String get day => 'day';
+
+  @override
+  String get days_plural => 'days';
 }

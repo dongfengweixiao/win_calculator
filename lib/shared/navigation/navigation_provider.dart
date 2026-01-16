@@ -48,6 +48,11 @@ final navCategories = [
         icon: CalculatorIcons.programmerCalculator,
         viewMode: ViewMode.programmer,
       ),
+      NavCategory(
+        name: '日期计算',
+        icon: CalculatorIcons.dateCalculation,
+        viewMode: ViewMode.dateCalculation,
+      ),
     ],
   ),
   // Converters will be added later

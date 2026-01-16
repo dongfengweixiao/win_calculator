@@ -9,6 +9,7 @@ import '../../core/services/layout/responsive_layout_service.dart';
 import '../programmer/programmer_grid_body.dart';
 import 'standard_grid_body.dart';
 import '../scientific/scientific_grid_body.dart';
+import '../date_calculation/date_calculation_body.dart';
 import 'navigation_drawer.dart';
 import '../history/history_panel.dart';
 
@@ -55,6 +56,10 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
             // Determine history panel visibility using ResponsiveLayoutService
             final showHistoryPanel = ResponsiveLayoutService.shouldShowHistoryPanel(constraints.maxWidth);
 
+            // Determine if history panel should be shown
+            // History/Memory panel is not needed for date calculation mode
+            final shouldShowHistoryPanel = showHistoryPanel && currentMode != ViewMode.dateCalculation;
+
             return Row(
               children: [
                 // Main calculator area
@@ -62,8 +67,8 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
                   child: _buildCalculatorBody(context, ref, theme, currentMode),
                 ),
 
-                // History panel (when width >= 640)
-                if (showHistoryPanel) const HistoryMemoryPanel(),
+                // History panel (when width >= 640 and not in date calculation mode)
+                if (shouldShowHistoryPanel) const HistoryMemoryPanel(),
               ],
             );
           },
@@ -96,6 +101,13 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
     // For programmer mode, use grid layout
     if (currentMode == ViewMode.programmer) {
       return ProgrammerGridBody(
+        onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
+      );
+    }
+
+    // For date calculation mode
+    if (currentMode == ViewMode.dateCalculation) {
+      return DateCalculationBody(
         onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
       );
     }

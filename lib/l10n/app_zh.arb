@@ -12,6 +12,10 @@
   "@programmerMode": {
     "description": "Name for the programmer calculator mode"
   },
+  "dateCalculationMode": "日期计算",
+  "@dateCalculationMode": {
+    "description": "Name for the date calculation mode"
+  },
   "history": "历史记录",
   "@history": {
     "description": "History panel tab label"
@@ -115,5 +119,97 @@
   "byte": "BYTE",
   "@byte": {
     "description": "Byte"
+  },
+  "dateCalculationTitle": "日期计算",
+  "@dateCalculationTitle": {
+    "description": "Title for date calculation page"
+  },
+  "calculateDifferenceBetweenDates": "计算两个日期之间的差值",
+  "@calculateDifferenceBetweenDates": {
+    "description": "Option to calculate difference between two dates"
+  },
+  "addOrSubtractFromDate": "从日期中添加或减去",
+  "@addOrSubtractFromDate": {
+    "description": "Option to add or subtract duration from a date"
+  },
+  "fromDate": "开始日期",
+  "@fromDate": {
+    "description": "Label for the starting date in date difference calculation"
+  },
+  "toDate": "结束日期",
+  "@toDate": {
+    "description": "Label for the ending date in date difference calculation"
+  },
+  "startDate": "起始日期",
+  "@startDate": {
+    "description": "Label for the starting date in add/subtract calculation"
+  },
+  "add": "添加",
+  "@add": {
+    "description": "Add operation for date calculation"
+  },
+  "subtract": "减去",
+  "@subtract": {
+    "description": "Subtract operation for date calculation"
+  },
+  "years": "年",
+  "@years": {
+    "description": "Years label for date offset"
+  },
+  "months": "月",
+  "@months": {
+    "description": "Months label for date offset"
+  },
+  "days": "日",
+  "@days": {
+    "description": "Days label for date offset"
+  },
+  "difference": "差值",
+  "@difference": {
+    "description": "Label for date difference result"
+  },
+  "result": "结果",
+  "@result": {
+    "description": "Label for calculation result"
+  },
+  "selectDate": "选择日期",
+  "@selectDate": {
+    "description": "Placeholder text when no date is selected"
+  },
+  "selectBothDates": "请选择两个日期",
+  "@selectBothDates": {
+    "description": "Message shown when dates are not selected"
+  },
+  "year": "年",
+  "@year": {
+    "description": "Singular form of year"
+  },
+  "years_plural": "年",
+  "@years_plural": {
+    "description": "Plural form of years"
+  },
+  "month": "个月",
+  "@month": {
+    "description": "Singular form of month"
+  },
+  "months_plural": "个月",
+  "@months_plural": {
+    "description": "Plural form of months"
+  },
+  "week": "周",
+  "@week": {
+    "description": "Singular form of week"
+  },
+  "weeks_plural": "周",
+  "@weeks_plural": {
+    "description": "Plural form of weeks"
+  },
+  "day": "天",
+  "@day": {
+    "description": "Singular form of day"
+  },
+  "days_plural": "天",
+  "@days_plural": {
+    "description": "Plural form of days"
   }
 }

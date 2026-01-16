@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Programmer'**
   String get programmerMode;
 
+  /// Name for the date calculation mode
+  ///
+  /// In en, this message translates to:
+  /// **'Date Calculation'**
+  String get dateCalculationMode;
+
   /// History panel tab label
   ///
   /// In en, this message translates to:
@@ -271,6 +277,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'BYTE'**
   String get byte;
+
+  /// Title for date calculation page
+  ///
+  /// In en, this message translates to:
+  /// **'Date Calculation'**
+  String get dateCalculationTitle;
+
+  /// Option to calculate difference between two dates
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate Difference Between Dates'**
+  String get calculateDifferenceBetweenDates;
+
+  /// Option to add or subtract duration from a date
+  ///
+  /// In en, this message translates to:
+  /// **'Add or Subtract from Date'**
+  String get addOrSubtractFromDate;
+
+  /// Label for the starting date in date difference calculation
+  ///
+  /// In en, this message translates to:
+  /// **'From Date'**
+  String get fromDate;
+
+  /// Label for the ending date in date difference calculation
+  ///
+  /// In en, this message translates to:
+  /// **'To Date'**
+  String get toDate;
+
+  /// Label for the starting date in add/subtract calculation
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get startDate;
+
+  /// Add operation for date calculation
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// Subtract operation for date calculation
+  ///
+  /// In en, this message translates to:
+  /// **'Subtract'**
+  String get subtract;
+
+  /// Years label for date offset
+  ///
+  /// In en, this message translates to:
+  /// **'Years'**
+  String get years;
+
+  /// Months label for date offset
+  ///
+  /// In en, this message translates to:
+  /// **'Months'**
+  String get months;
+
+  /// Days label for date offset
+  ///
+  /// In en, this message translates to:
+  /// **'Days'**
+  String get days;
+
+  /// Label for date difference result
+  ///
+  /// In en, this message translates to:
+  /// **'Difference'**
+  String get difference;
+
+  /// Label for calculation result
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get result;
+
+  /// Placeholder text when no date is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Select date'**
+  String get selectDate;
+
+  /// Message shown when dates are not selected
+  ///
+  /// In en, this message translates to:
+  /// **'Select both dates'**
+  String get selectBothDates;
+
+  /// Singular form of year
+  ///
+  /// In en, this message translates to:
+  /// **'year'**
+  String get year;
+
+  /// Plural form of years
+  ///
+  /// In en, this message translates to:
+  /// **'years'**
+  String get years_plural;
+
+  /// Singular form of month
+  ///
+  /// In en, this message translates to:
+  /// **'month'**
+  String get month;
+
+  /// Plural form of months
+  ///
+  /// In en, this message translates to:
+  /// **'months'**
+  String get months_plural;
+
+  /// Singular form of week
+  ///
+  /// In en, this message translates to:
+  /// **'week'**
+  String get week;
+
+  /// Plural form of weeks
+  ///
+  /// In en, this message translates to:
+  /// **'weeks'**
+  String get weeks_plural;
+
+  /// Singular form of day
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get day;
+
+  /// Plural form of days
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get days_plural;
 }
 
 class _AppLocalizationsDelegate

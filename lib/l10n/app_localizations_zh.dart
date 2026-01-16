@@ -18,6 +18,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get programmerMode => '程序员';
 
   @override
+  String get dateCalculationMode => '日期计算';
+
+  @override
   String get history => '历史记录';
 
   @override
@@ -94,4 +97,73 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get byte => 'BYTE';
+
+  @override
+  String get dateCalculationTitle => '日期计算';
+
+  @override
+  String get calculateDifferenceBetweenDates => '计算两个日期之间的差值';
+
+  @override
+  String get addOrSubtractFromDate => '从日期中添加或减去';
+
+  @override
+  String get fromDate => '开始日期';
+
+  @override
+  String get toDate => '结束日期';
+
+  @override
+  String get startDate => '起始日期';
+
+  @override
+  String get add => '添加';
+
+  @override
+  String get subtract => '减去';
+
+  @override
+  String get years => '年';
+
+  @override
+  String get months => '月';
+
+  @override
+  String get days => '日';
+
+  @override
+  String get difference => '差值';
+
+  @override
+  String get result => '结果';
+
+  @override
+  String get selectDate => '选择日期';
+
+  @override
+  String get selectBothDates => '请选择两个日期';
+
+  @override
+  String get year => '年';
+
+  @override
+  String get years_plural => '年';
+
+  @override
+  String get month => '个月';
+
+  @override
+  String get months_plural => '个月';
+
+  @override
+  String get week => '周';
+
+  @override
+  String get weeks_plural => '周';
+
+  @override
+  String get day => '天';
+
+  @override
+  String get days_plural => '天';
 }

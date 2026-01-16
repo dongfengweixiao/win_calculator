@@ -12,6 +12,10 @@
   "@programmerMode": {
     "description": "Name for the programmer calculator mode"
   },
+  "dateCalculationMode": "Date Calculation",
+  "@dateCalculationMode": {
+    "description": "Name for the date calculation mode"
+  },
   "history": "History",
   "@history": {
     "description": "History panel tab label"
@@ -115,5 +119,97 @@
   "byte": "BYTE",
   "@byte": {
     "description": "Byte"
+  },
+  "dateCalculationTitle": "Date Calculation",
+  "@dateCalculationTitle": {
+    "description": "Title for date calculation page"
+  },
+  "calculateDifferenceBetweenDates": "Calculate Difference Between Dates",
+  "@calculateDifferenceBetweenDates": {
+    "description": "Option to calculate difference between two dates"
+  },
+  "addOrSubtractFromDate": "Add or Subtract from Date",
+  "@addOrSubtractFromDate": {
+    "description": "Option to add or subtract duration from a date"
+  },
+  "fromDate": "From Date",
+  "@fromDate": {
+    "description": "Label for the starting date in date difference calculation"
+  },
+  "toDate": "To Date",
+  "@toDate": {
+    "description": "Label for the ending date in date difference calculation"
+  },
+  "startDate": "Start Date",
+  "@startDate": {
+    "description": "Label for the starting date in add/subtract calculation"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add operation for date calculation"
+  },
+  "subtract": "Subtract",
+  "@subtract": {
+    "description": "Subtract operation for date calculation"
+  },
+  "years": "Years",
+  "@years": {
+    "description": "Years label for date offset"
+  },
+  "months": "Months",
+  "@months": {
+    "description": "Months label for date offset"
+  },
+  "days": "Days",
+  "@days": {
+    "description": "Days label for date offset"
+  },
+  "difference": "Difference",
+  "@difference": {
+    "description": "Label for date difference result"
+  },
+  "result": "Result",
+  "@result": {
+    "description": "Label for calculation result"
+  },
+  "selectDate": "Select date",
+  "@selectDate": {
+    "description": "Placeholder text when no date is selected"
+  },
+  "selectBothDates": "Select both dates",
+  "@selectBothDates": {
+    "description": "Message shown when dates are not selected"
+  },
+  "year": "year",
+  "@year": {
+    "description": "Singular form of year"
+  },
+  "years_plural": "years",
+  "@years_plural": {
+    "description": "Plural form of years"
+  },
+  "month": "month",
+  "@month": {
+    "description": "Singular form of month"
+  },
+  "months_plural": "months",
+  "@months_plural": {
+    "description": "Plural form of months"
+  },
+  "week": "week",
+  "@week": {
+    "description": "Singular form of week"
+  },
+  "weeks_plural": "weeks",
+  "@weeks_plural": {
+    "description": "Plural form of weeks"
+  },
+  "day": "day",
+  "@day": {
+    "description": "Singular form of day"
+  },
+  "days_plural": "days",
+  "@days_plural": {
+    "description": "Plural form of days"
   }
 }

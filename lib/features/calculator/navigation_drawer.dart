@@ -107,6 +107,8 @@ class CalculatorNavigationDrawer extends ConsumerWidget {
         return l10n.scientificMode;
       case 'programmerMode':
         return l10n.programmerMode;
+      case 'dateCalculationMode':
+        return l10n.dateCalculationMode;
       default:
         return mode.localizationKey;
     }

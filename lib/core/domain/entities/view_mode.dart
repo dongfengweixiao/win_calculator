@@ -15,6 +15,9 @@ enum ViewMode {
 
   /// Volume converter mode
   volumeConverter,
+
+  /// Temperature converter mode
+  temperatureConverter,
 }
 
 /// Extension on ViewMode to provide conversion and display methods
@@ -32,6 +35,8 @@ extension ViewModeExtension on ViewMode {
         return 'dateCalculationMode';
       case ViewMode.volumeConverter:
         return 'volumeConverterMode';
+      case ViewMode.temperatureConverter:
+        return 'temperatureConverterMode';
     }
   }
 
@@ -48,6 +53,8 @@ extension ViewModeExtension on ViewMode {
         return 'DATE';
       case ViewMode.volumeConverter:
         return 'VOLUME';
+      case ViewMode.temperatureConverter:
+        return 'TEMP';
     }
   }
 }

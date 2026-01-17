@@ -331,5 +331,25 @@
   "metricCups": "Metric Cups",
   "@metricCups": {
     "description": "Metric cups unit"
+  },
+  "temperatureConverterMode": "Temperature",
+  "@temperatureConverterMode": {
+    "description": "Name for the temperature converter mode"
+  },
+  "temperatureConverterTitle": "Temperature Converter",
+  "@temperatureConverterTitle": {
+    "description": "Title for temperature converter page"
+  },
+  "celsius": "Celsius",
+  "@celsius": {
+    "description": "Celsius temperature unit"
+  },
+  "fahrenheit": "Fahrenheit",
+  "@fahrenheit": {
+    "description": "Fahrenheit temperature unit"
+  },
+  "kelvin": "Kelvin",
+  "@kelvin": {
+    "description": "Kelvin temperature unit"
   }
 }

@@ -256,4 +256,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get metricCups => '公制杯';
+
+  @override
+  String get temperatureConverterMode => '温度';
+
+  @override
+  String get temperatureConverterTitle => '温度转换';
+
+  @override
+  String get celsius => '摄氏度';
+
+  @override
+  String get fahrenheit => '华氏度';
+
+  @override
+  String get kelvin => '开尔文';
 }

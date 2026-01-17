@@ -595,6 +595,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Metric Cups'**
   String get metricCups;
+
+  /// Name for the temperature converter mode
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get temperatureConverterMode;
+
+  /// Title for temperature converter page
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature Converter'**
+  String get temperatureConverterTitle;
+
+  /// Celsius temperature unit
+  ///
+  /// In en, this message translates to:
+  /// **'Celsius'**
+  String get celsius;
+
+  /// Fahrenheit temperature unit
+  ///
+  /// In en, this message translates to:
+  /// **'Fahrenheit'**
+  String get fahrenheit;
+
+  /// Kelvin temperature unit
+  ///
+  /// In en, this message translates to:
+  /// **'Kelvin'**
+  String get kelvin;
 }
 
 class _AppLocalizationsDelegate

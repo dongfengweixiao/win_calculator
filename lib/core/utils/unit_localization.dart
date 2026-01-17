@@ -69,6 +69,13 @@ class UnitLocalization {
         return l10n.usTeaspoons;
       case 'Metric cups':
         return l10n.metricCups;
+      // Temperature units
+      case 'Celsius':
+        return l10n.celsius;
+      case 'Fahrenheit':
+        return l10n.fahrenheit;
+      case 'Kelvin':
+        return l10n.kelvin;
       default:
         return null;
     }

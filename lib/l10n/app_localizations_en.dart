@@ -257,4 +257,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get metricCups => 'Metric Cups';
+
+  @override
+  String get temperatureConverterMode => 'Temperature';
+
+  @override
+  String get temperatureConverterTitle => 'Temperature Converter';
+
+  @override
+  String get celsius => 'Celsius';
+
+  @override
+  String get fahrenheit => 'Fahrenheit';
+
+  @override
+  String get kelvin => 'Kelvin';
 }

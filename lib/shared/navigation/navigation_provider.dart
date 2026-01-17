@@ -63,6 +63,11 @@ final navCategories = [
         icon: CalculatorIcons.volume,
         viewMode: ViewMode.volumeConverter,
       ),
+      NavCategory(
+        name: '温度',
+        icon: CalculatorIcons.temperature,
+        viewMode: ViewMode.temperatureConverter,
+      ),
     ],
   ),
 ];

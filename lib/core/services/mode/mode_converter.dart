@@ -16,6 +16,7 @@ class ModeConverter {
         return CalculatorMode.programmer;
       case ViewMode.dateCalculation:
       case ViewMode.volumeConverter:
+      case ViewMode.temperatureConverter:
         // These modes don't use calculator engine, return standard mode
         return CalculatorMode.standard;
     }

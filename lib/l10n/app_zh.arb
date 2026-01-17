@@ -331,5 +331,25 @@
   "metricCups": "公制杯",
   "@metricCups": {
     "description": "Metric cups unit"
+  },
+  "temperatureConverterMode": "温度",
+  "@temperatureConverterMode": {
+    "description": "Name for the temperature converter mode"
+  },
+  "temperatureConverterTitle": "温度转换",
+  "@temperatureConverterTitle": {
+    "description": "Title for temperature converter page"
+  },
+  "celsius": "摄氏度",
+  "@celsius": {
+    "description": "Celsius temperature unit"
+  },
+  "fahrenheit": "华氏度",
+  "@fahrenheit": {
+    "description": "Fahrenheit temperature unit"
+  },
+  "kelvin": "开尔文",
+  "@kelvin": {
+    "description": "Kelvin temperature unit"
   }
 }

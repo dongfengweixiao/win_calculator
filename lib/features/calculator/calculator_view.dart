@@ -11,6 +11,7 @@ import 'standard_grid_body.dart';
 import '../scientific/scientific_grid_body.dart';
 import '../date_calculation/date_calculation_body.dart';
 import '../volume_converter/volume_converter_body.dart';
+import '../temperature_converter/temperature_converter_body.dart';
 import 'navigation_drawer.dart';
 import '../history/history_panel.dart';
 
@@ -61,7 +62,8 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
             // History/Memory panel is not needed for date calculation and converter modes
             final shouldShowHistoryPanel = showHistoryPanel &&
                 currentMode != ViewMode.dateCalculation &&
-                currentMode != ViewMode.volumeConverter;
+                currentMode != ViewMode.volumeConverter &&
+                currentMode != ViewMode.temperatureConverter;
 
             return Row(
               children: [
@@ -118,6 +120,13 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
     // For volume converter mode
     if (currentMode == ViewMode.volumeConverter) {
       return VolumeConverterBody(
+        onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
+      );
+    }
+
+    // For temperature converter mode
+    if (currentMode == ViewMode.temperatureConverter) {
+      return TemperatureConverterBody(
         onMenuPressed: () => _scaffoldKey.currentState?.openDrawer(),
       );
     }

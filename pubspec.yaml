@@ -1,5 +1,5 @@
-name: example
-description: "A new Flutter project."
+name: calculator
+description: "A powerful calculator application with support for various conversions."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -65,6 +65,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
 
+  # Generate app icons for all platforms
+  flutter_launcher_icons: ^0.14.4
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -105,3 +108,33 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Flutter Launcher Icons configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  linux: true
+  windows:
+    generate: true
+    image_path: "assets/logo.png"
+    icon_size: 256
+  macos:
+    generate: true
+    image_path: "assets/logo.png"
+  web:
+    generate: true
+
+  # Image path (relative to pubspec.yaml)
+  # Prefer PNG for better compatibility
+  image_path: "assets/logo.png"
+
+  # Optional: Use SVG if you prefer (requires flutter_svg dependency)
+  # image_path: "assets/logo.svg"
+
+  # Optional: Adaptive icon for Android (foreground icon)
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/logo.png"
+
+  # Optional: Remove alpha channel for Android (makes icons opaque)
+  remove_alpha_ios: true
+  remove_alpha_android: true

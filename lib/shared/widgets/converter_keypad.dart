@@ -1,4 +1,4 @@
-import 'package:example/core/theme/app_icons.dart';
+import 'package:calculator/core/theme/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import '../../core/theme/app_theme.dart';
